@@ -7,11 +7,11 @@ on:
 
 jobs:
 
-  # Run cleaning process only if workflow is triggered by the non micronaut-project/micronaut-project-template repository.
+  # Run cleaning process only if workflow is triggered by the non micronaut-project/micronaut-opensearch repository.
   template-cleanup:
     name: Template Cleanup
     runs-on: ubuntu-latest
-    if: github.event.repository.name != 'micronaut-project-template'
+    if: github.event.repository.name != 'micronaut-opensearch'
     steps:
 
       # Check out current repository
@@ -22,19 +22,19 @@ jobs:
       - name: Cleanup
         run: |
           # Update CLA url in CONTRIBUTING.md
-          sed -i "s|micronaut-projects/micronaut-project-template|$GITHUB_REPOSITORY|" CONTRIBUTING.md
-          sed -i "s|project-template|${GITHUB_REPOSITORY:29}|" README.md
-          sed -i "s|project-template|${GITHUB_REPOSITORY:29}|" gradle.properties
-          sed -i "s|project-template|${GITHUB_REPOSITORY:29}|" CONTRIBUTING.md
-          sed -i "s|project-template|${GITHUB_REPOSITORY:29}|" MAINTAINING.md
-          sed -i "s|micronaut-projects/micronaut-project-template|$GITHUB_REPOSITORY|" SECURITY.md
-          sed -i "s|project-template|${GITHUB_REPOSITORY:29}|" project-template/build.gradle
-          sed -i "s|project-template|${GITHUB_REPOSITORY:29}|" project-template-bom/build.gradle
-          sed -i "s|project-template|${GITHUB_REPOSITORY:29}|" buildSrc/src/main/groovy/io.micronaut.build.internal.project-template-module.gradle
-          git mv project-template/ "micronaut-${GITHUB_REPOSITORY:29}/"
-          git mv project-template-bom/ "micronaut-${GITHUB_REPOSITORY:29}-bom/"
-          git mv buildSrc/src/main/groovy/io.micronaut.build.internal.project-template-module.gradle "buildSrc/src/main/groovy/io.micronaut.build.internal.${GITHUB_REPOSITORY:29}-module.gradle"
-          git mv buildSrc/src/main/groovy/io.micronaut.build.internal.project-template-base.gradle "buildSrc/src/main/groovy/io.micronaut.build.internal.${GITHUB_REPOSITORY:29}-base.gradle"
+          sed -i "s|micronaut-projects/micronaut-opensearch|$GITHUB_REPOSITORY|" CONTRIBUTING.md
+          sed -i "s|opensearch|${GITHUB_REPOSITORY:29}|" README.md
+          sed -i "s|opensearch|${GITHUB_REPOSITORY:29}|" gradle.properties
+          sed -i "s|opensearch|${GITHUB_REPOSITORY:29}|" CONTRIBUTING.md
+          sed -i "s|opensearch|${GITHUB_REPOSITORY:29}|" MAINTAINING.md
+          sed -i "s|micronaut-projects/micronaut-opensearch|$GITHUB_REPOSITORY|" SECURITY.md
+          sed -i "s|opensearch|${GITHUB_REPOSITORY:29}|" opensearch/build.gradle
+          sed -i "s|opensearch|${GITHUB_REPOSITORY:29}|" opensearch-bom/build.gradle
+          sed -i "s|opensearch|${GITHUB_REPOSITORY:29}|" buildSrc/src/main/groovy/io.micronaut.build.internal.opensearch-module.gradle
+          git mv opensearch/ "micronaut-${GITHUB_REPOSITORY:29}/"
+          git mv opensearch-bom/ "micronaut-${GITHUB_REPOSITORY:29}-bom/"
+          git mv buildSrc/src/main/groovy/io.micronaut.build.internal.opensearch-module.gradle "buildSrc/src/main/groovy/io.micronaut.build.internal.${GITHUB_REPOSITORY:29}-module.gradle"
+          git mv buildSrc/src/main/groovy/io.micronaut.build.internal.opensearch-base.gradle "buildSrc/src/main/groovy/io.micronaut.build.internal.${GITHUB_REPOSITORY:29}-base.gradle"
           # Remove clean up template
           rm -rf  .github/workflows/template-cleanup.yml
       # Commit modified files
