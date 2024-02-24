@@ -22,28 +22,36 @@ micronaut-test = "4.2.1"
 groovy = "4.0.17"
 spock = "2.3-groovy-4.0"
 
+## Check these for updates.
+slf4j = "2.0.11"
+graal-svm = "23.1.2"
+awaitility = "4.2.0"
+micronaut-gradle-plugin = "4.2.1"
+micronaut-test-resources="2.3.2"
+
+apache-http-client = "4.5.14"
+apache-http-async-client = "4.1.5"
+
 # Managed versions appear in the BOM
-# managed-somelib = "1.0"
-# managed-somebom = "1.1"
+managed-opensearch-java = "2.6.0"
+managed-opensearch-rest-client = "2.12.0"
 
 [libraries]
 # Core
 micronaut-core = { module = 'io.micronaut:micronaut-core-bom', version.ref = 'micronaut' }
 
-#
-# Managed dependencies appear in the BOM
-#
-# managed-somelib = { module = "group:artifact", version.ref = "managed-somelib" }
+micronaut-test-resources = { module = "io.micronaut.testresources:micronaut-test-resources-bom", version.ref = "micronaut-test-resources" }
 
-#
-# Imported BOMs, also appearing in the generated BOM
-#
-# boms-somebom = { module = "com.foo:somebom", version.ref = "managed-somebom" }
+jcl-over-slf4j = { module = "org.slf4j:jcl-over-slf4j", version.ref = "slf4j" }
 
-# Other libraries used by the project but non managed
+managed-opensearch-java = { module = "org.opensearch.client:opensearch-java", version.ref = "managed-opensearch-java" }
+managed-opensearch-rest-client = { module = "org.opensearch.client:opensearch-rest-client", version.ref = "managed-opensearch-rest-client" }
+apache-http-client = { module = "org.apache.httpcomponents:httpclient", version.ref = "apache-http-client" }
+apache-http-async-client = { module = "org.apache.httpcomponents:httpasyncclient", version.ref = "apache-http-async-client" }
+graal-svm = { module = "org.graalvm.nativeimage:svm", version.ref = "graal-svm" }
 
-# micronaut-bom = { module = "io.micronaut:micronaut-bom", version.ref = "micronaut" }
-# jdoctor = { module = "me.champeau.jdoctor:jdoctor-core", version.ref="jdoctor" }
+awaitility = { module = "org.awaitility:awaitility", version.ref = "awaitility" }
+gradle-micronaut = { module = "io.micronaut.gradle:micronaut-gradle-plugin", version.ref = "micronaut-gradle-plugin" }
 
 [bundles]
 
