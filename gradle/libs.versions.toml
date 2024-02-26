@@ -16,9 +16,11 @@
 # a managed version (a version which alias starts with "managed-"
 
 [versions]
-micronaut = "4.3.7"
+micronaut = "4.3.9"
+micronaut-platform = "4.3.4"
 micronaut-docs = "2.0.0"
 micronaut-test = "4.2.1"
+micronaut-logging = "1.2.3"
 groovy = "4.0.17"
 spock = "2.3-groovy-4.0"
 
@@ -26,11 +28,14 @@ spock = "2.3-groovy-4.0"
 slf4j = "2.0.11"
 graal-svm = "23.1.2"
 awaitility = "4.2.0"
-micronaut-gradle-plugin = "4.2.1"
-micronaut-test-resources="2.3.2"
+micronaut-gradle-plugin = "4.3.3"
+micronaut-test-resources="2.3.3"
 
 apache-http-client = "4.5.14"
 apache-http-async-client = "4.1.5"
+
+
+opensearch-testcontainers = "2.0.1"
 
 # Managed versions appear in the BOM
 managed-opensearch-java = "2.6.0"
@@ -46,6 +51,8 @@ jcl-over-slf4j = { module = "org.slf4j:jcl-over-slf4j", version.ref = "slf4j" }
 
 managed-opensearch-java = { module = "org.opensearch.client:opensearch-java", version.ref = "managed-opensearch-java" }
 managed-opensearch-rest-client = { module = "org.opensearch.client:opensearch-rest-client", version.ref = "managed-opensearch-rest-client" }
+opensearch-testcontainers = { module = "org.opensearch:opensearch-testcontainers", version.ref = "opensearch-testcontainers" }
+
 apache-http-client = { module = "org.apache.httpcomponents:httpclient", version.ref = "apache-http-client" }
 apache-http-async-client = { module = "org.apache.httpcomponents:httpasyncclient", version.ref = "apache-http-async-client" }
 graal-svm = { module = "org.graalvm.nativeimage:svm", version.ref = "graal-svm" }

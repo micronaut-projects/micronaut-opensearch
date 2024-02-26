@@ -8,9 +8,6 @@ dependencies {
     implementation(mn.micronaut.management)
     api(libs.managed.opensearch.java)
     
-    // {
-    //     exclude(group="org.elasticsearch.client", module = "elasticsearch-rest-client")
-    // }
     implementation(libs.managed.opensearch.rest.client) {
         exclude(group="commons-logging", module = "commons-logging")
     }
@@ -19,7 +16,6 @@ dependencies {
 
     implementation(mn.micronaut.jackson.databind)
 
-    // testImplementation(mnTestResources.testcontainers.opensearch)
     testImplementation(mn.groovy.json)
     // testImplementation(mnSecurity.micronaut.security)
     testImplementation(mn.reactor)
