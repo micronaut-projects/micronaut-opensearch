@@ -1,0 +1,5 @@
+After you add the https://docs.micronaut.io/latest/guide/#management[management] dependency, the https://docs.micronaut.io/latest/guide/#healthEndpoint[Health Endpoint] exposes a health indicator for OpenSearch.
+
+You can disable it with:
+
+include::{includedir}configurationProperties/io.micronaut.opensearch.health.OpenSearchHealthIndicatorConfigurationProperties.adoc[]
