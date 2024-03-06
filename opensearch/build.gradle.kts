@@ -15,9 +15,6 @@ dependencies {
     api(mn.micronaut.http)
 
     implementation(mn.micronaut.jackson.databind)
-
-    testImplementation(mn.groovy.json)
-    testImplementation(mn.reactor)
 }
 
 
