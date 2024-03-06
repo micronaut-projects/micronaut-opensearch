@@ -11,7 +11,7 @@ dependencies {
     implementation(libs.managed.opensearch.rest.client) {
         exclude(group="commons-logging", module = "commons-logging")
     }
-    runtimeOnly(libs.jcl.over.slf4j)
+    runtimeOnly(mnLogging.slf4j.jcl.over.slf4j)
     api(mn.micronaut.http)
 
     implementation(mn.micronaut.jackson.databind)

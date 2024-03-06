@@ -25,7 +25,6 @@ groovy = "4.0.17"
 spock = "2.3-groovy-4.0"
 
 ## Check these for updates.
-slf4j = "2.0.11"
 graal-svm = "23.1.2"
 awaitility = "4.2.0"
 micronaut-gradle-plugin = "4.3.3"
@@ -47,7 +46,6 @@ micronaut-core = { module = 'io.micronaut:micronaut-core-bom', version.ref = 'mi
 
 micronaut-test-resources = { module = "io.micronaut.testresources:micronaut-test-resources-bom", version.ref = "micronaut-test-resources" }
 
-jcl-over-slf4j = { module = "org.slf4j:jcl-over-slf4j", version.ref = "slf4j" }
 
 managed-opensearch-java = { module = "org.opensearch.client:opensearch-java", version.ref = "managed-opensearch-java" }
 managed-opensearch-rest-client = { module = "org.opensearch.client:opensearch-rest-client", version.ref = "managed-opensearch-rest-client" }
