@@ -1,1 +1,3 @@
-TODO
+To use Micronaut OpenSearch, you should add the following dependency to your project:
+
+dependency:micronaut-opensearch[groupId=io.micronaut.opensearch]
