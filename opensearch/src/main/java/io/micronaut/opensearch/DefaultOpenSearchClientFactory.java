@@ -15,6 +15,7 @@
  */
 package io.micronaut.opensearch;
 
+import io.micronaut.opensearch.conf.OpenSearchConfiguration;
 import org.opensearch.client.RestClient;
 import org.opensearch.client.RestClientBuilder;
 import org.opensearch.client.json.jackson.JacksonJsonpMapper;
@@ -34,16 +35,16 @@ import jakarta.inject.Singleton;
 /**
  * Factory responsible for creating OpenSearch clients.
  */
-@Requires(beans = DefaultOpenSearchConfigurationProperties.class)
+@Requires(beans = OpenSearchConfiguration.class)
 @Factory
 public class DefaultOpenSearchClientFactory {
 
     /**
-     * @param openSearchConfiguration The {@link DefaultOpenSearchConfigurationProperties} object
+     * @param openSearchConfiguration OpenSearch Configuration.
      * @return The OpenSearch Rest Client
      */
     @Bean(preDestroy = "close")
-    RestClient restClient(DefaultOpenSearchConfigurationProperties openSearchConfiguration) {
+    RestClient restClient(OpenSearchConfiguration openSearchConfiguration) {
         return restClientBuilder(openSearchConfiguration).build();
     }
 
@@ -69,7 +70,7 @@ public class DefaultOpenSearchClientFactory {
 
     /**
      * @param openSearchConfiguration The
-     *                                {@link DefaultOpenSearchConfigurationProperties}
+     *                                {@link OpenSearchConfiguration}
      *                                object.
      * @param objectMapper            The {@link ObjectMapper} object.
      * @return The {@link OpenSearchTransport}.
@@ -77,8 +78,8 @@ public class DefaultOpenSearchClientFactory {
      */
     @Singleton
     @Bean(preDestroy = "close")
-    OpenSearchTransport openSearchTransport(DefaultOpenSearchConfigurationProperties openSearchConfiguration,
-            ObjectMapper objectMapper) {
+    OpenSearchTransport openSearchTransport(OpenSearchConfiguration openSearchConfiguration,
+                                            ObjectMapper objectMapper) {
         RestClient restClient = restClientBuilder(openSearchConfiguration).build();
 
         OpenSearchTransport transport = new RestClientTransport(restClient, new JacksonJsonpMapper(objectMapper));
@@ -87,17 +88,17 @@ public class DefaultOpenSearchClientFactory {
 
     /**
      * @param openSearchConfiguration The
-     *                                {@link DefaultOpenSearchConfigurationProperties}
+     *                                {@link OpenSearchConfiguration}
      *                                object
      * @return The {@link RestClientBuilder}
      */
-    protected RestClientBuilder restClientBuilder(DefaultOpenSearchConfigurationProperties openSearchConfiguration) {
+    protected RestClientBuilder restClientBuilder(OpenSearchConfiguration openSearchConfiguration) {
         RestClientBuilder builder = RestClient.builder(openSearchConfiguration.getHttpHosts())
             .setRequestConfigCallback(requestConfigBuilder -> {
-                requestConfigBuilder = openSearchConfiguration.requestConfigBuilder;
+                requestConfigBuilder = openSearchConfiguration.getRequestConfigBuilder();
                 return requestConfigBuilder;
             }).setHttpClientConfigCallback(httpClientBuilder -> {
-                httpClientBuilder = openSearchConfiguration.httpAsyncClientBuilder;
+                httpClientBuilder = openSearchConfiguration.getHttpAsyncClientBuilder();
                 return httpClientBuilder;
             });
 

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.opensearch;
+package io.micronaut.opensearch.conf;
 
 import java.util.Collections;
 
@@ -33,8 +33,23 @@ import jakarta.inject.Inject;
  * Property based Default implementation of the OpenSearch Configuration.
  */
 @Requires(classes = RestClientBuilder.class)
-@ConfigurationProperties(OpenSearchSettings.PREFIX)
-public class DefaultOpenSearchConfigurationProperties implements DefaultOpenSearchConfiguration {
+@ConfigurationProperties(OpenSearchConfigurationProperties.PREFIX)
+public class OpenSearchConfigurationProperties implements OpenSearchConfiguration {
+    /**
+     * The default enable value.
+     */
+    @SuppressWarnings("WeakerAccess")
+    public static final boolean DEFAULT_ENABLED = true;
+
+    /**
+     * The prefix to use for all OpenSearch settings.
+     */
+    public static final String PREFIX = "opensearch";
+
+    /**
+     * Default OpenSearch host.
+     */
+    private static final HttpHost DEFAULT_HOST = new HttpHost("127.0.0.1", 9200, "http");
 
     protected HttpAsyncClientBuilder httpAsyncClientBuilder;
 
@@ -46,8 +61,10 @@ public class DefaultOpenSearchConfigurationProperties implements DefaultOpenSear
 
     private int maxRetryTimeoutMillis;
     private NodeSelector nodeSelector;
-    private HttpHost[] httpHosts = Collections.singletonList(OpenSearchSettings.DEFAULT_HOST).toArray(new HttpHost[1]);
+    private HttpHost[] httpHosts = Collections.singletonList(DEFAULT_HOST).toArray(new HttpHost[1]);
     private Header[] defaultHeaders;
+
+    private boolean enabled = DEFAULT_ENABLED;
 
     @Override
     public HttpHost[] getHttpHosts() {
@@ -114,5 +131,19 @@ public class DefaultOpenSearchConfigurationProperties implements DefaultOpenSear
     @Inject
     public void setHttpAsyncClientBuilder(HttpAsyncClientBuilder httpAsyncClientBuilder) {
         this.httpAsyncClientBuilder = httpAsyncClientBuilder;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return this.enabled;
+    }
+
+    /**
+     * If OpenSearch integration is enabled. Default value {@value #DEFAULT_ENABLED}
+     *
+     * @param enabled True if security is enabled
+     */
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

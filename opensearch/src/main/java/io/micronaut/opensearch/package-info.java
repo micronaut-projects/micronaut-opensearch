@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 /**
- * Configuration for Elasticsearch RestHighLevelClient.
- * refer to https://www.elastic.co/guide/en/elasticsearch/client/java-rest/6.3/java-rest-high.html
+ * Micronaut OpenSearch integration clases.
  *
  * @since 1.0.0
  */
 @Configuration
-@RequiresOpenSearch
+@Requires(property = OpenSearchConfigurationProperties.PREFIX + ".enabled", notEquals = StringUtils.FALSE)
 package io.micronaut.opensearch;
 
 import io.micronaut.context.annotation.Configuration;
-import io.micronaut.opensearch.conditon.RequiresOpenSearch;
+import io.micronaut.context.annotation.Requires;
+import io.micronaut.core.util.StringUtils;
+import io.micronaut.opensearch.conf.OpenSearchConfigurationProperties;
