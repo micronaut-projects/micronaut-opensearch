@@ -29,6 +29,7 @@ graal-svm = "23.1.2"
 awaitility = "4.2.0"
 micronaut-gradle-plugin = "4.3.3"
 micronaut-test-resources="2.3.3"
+micronaut-validation="4.4.3"
 
 apache-http-client = "4.5.14"
 apache-http-async-client = "4.1.5"
@@ -45,8 +46,7 @@ managed-opensearch-rest-client = "2.12.0"
 micronaut-core = { module = 'io.micronaut:micronaut-core-bom', version.ref = 'micronaut' }
 
 micronaut-test-resources = { module = "io.micronaut.testresources:micronaut-test-resources-bom", version.ref = "micronaut-test-resources" }
-
-
+micronaut-validation = { module = "io.micronaut.validation:micronaut-validation-bom", version.ref = "micronaut-validation" }
 managed-opensearch-java = { module = "org.opensearch.client:opensearch-java", version.ref = "managed-opensearch-java" }
 managed-opensearch-rest-client = { module = "org.opensearch.client:opensearch-rest-client", version.ref = "managed-opensearch-rest-client" }
 opensearch-testcontainers = { module = "org.opensearch:opensearch-testcontainers", version.ref = "opensearch-testcontainers" }
