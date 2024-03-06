@@ -1,1 +1,5 @@
-TODO
+Micronaut OpenSearch simplifies integration with https://opensearch.org[OpenSearch].
+
+____
+OpenSearch is the flexible, scalable, open-source way to build solutions for data-intensive applications.
+____
