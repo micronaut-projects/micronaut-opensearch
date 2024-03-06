@@ -17,7 +17,6 @@ dependencies {
     implementation(mn.micronaut.jackson.databind)
 
     testImplementation(mn.groovy.json)
-    // testImplementation(mnSecurity.micronaut.security)
     testImplementation(mn.reactor)
 }
 
