@@ -5,7 +5,7 @@ dependencies {
     annotationProcessor(mn.micronaut.graal)
 
     compileOnly(libs.graal.svm)
-    implementation(mn.micronaut.management)
+    compileOnly(mn.micronaut.management)
     api(libs.managed.opensearch.java)
     
     implementation(libs.managed.opensearch.rest.client) {
