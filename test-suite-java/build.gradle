@@ -16,7 +16,6 @@ dependencies {
     implementation(mnValidation.micronaut.validation)
     testImplementation(libs.awaitility)
     implementation(project(":opensearch"))
-    implementation(mn.snakeyaml)
     runtimeOnly(mnLogging.logback.classic)
     
     testResourcesImplementation(libs.opensearch.testcontainers)
