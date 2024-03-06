@@ -15,28 +15,23 @@
  */
 package io.micronaut.opensearch.health;
 
-import static io.micronaut.health.HealthStatus.DOWN;
-import static io.micronaut.health.HealthStatus.UP;
-
-import java.io.IOException;
-import java.util.Locale;
-
+import io.micronaut.health.HealthStatus;
+import io.micronaut.management.health.indicator.HealthIndicator;
+import io.micronaut.management.health.indicator.HealthResult;
+import jakarta.inject.Singleton;
 import org.opensearch.client.opensearch.OpenSearchAsyncClient;
 import org.opensearch.client.opensearch.cluster.HealthResponse;
 import org.reactivestreams.Publisher;
 
-import io.micronaut.context.annotation.Requires;
-import io.micronaut.health.HealthStatus;
-import io.micronaut.management.endpoint.health.HealthEndpoint;
-import io.micronaut.management.health.indicator.HealthIndicator;
-import io.micronaut.management.health.indicator.HealthResult;
-import jakarta.inject.Singleton;
+import java.io.IOException;
+import java.util.Locale;
+
+import static io.micronaut.health.HealthStatus.DOWN;
+import static io.micronaut.health.HealthStatus.UP;
 
 /**
  * Health indicator integration for the configured OpenSearch cluster. 
  */
-@Requires(beans = HealthEndpoint.class)
-@Requires(property = HealthEndpoint.PREFIX + ".opensearch.enabled", notEquals = "false")
 @Singleton
 public class OpenSearchClientHealthIndicator implements HealthIndicator {
 

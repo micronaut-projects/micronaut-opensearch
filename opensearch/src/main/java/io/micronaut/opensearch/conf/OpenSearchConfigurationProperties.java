@@ -34,7 +34,7 @@ import jakarta.inject.Inject;
  */
 @Requires(classes = RestClientBuilder.class)
 @ConfigurationProperties(OpenSearchConfigurationProperties.PREFIX)
-public class OpenSearchConfigurationProperties implements OpenSearchConfiguration {
+public final class OpenSearchConfigurationProperties implements OpenSearchConfiguration {
     /**
      * The default enable value.
      */

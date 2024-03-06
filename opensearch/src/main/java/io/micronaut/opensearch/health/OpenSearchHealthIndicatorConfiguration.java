@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-2020 original authors
+ * Copyright 2017-2024 original authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,16 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package io.micronaut.opensearch.health;
+
+import io.micronaut.core.util.Toggleable;
+
 /**
- * Micronaut OpenSearch integration clases.
- *
+ * Configuration for OpenSearch Health Indicator.
+ * @author Sergio del Amo
  * @since 1.0.0
  */
-@Configuration
-@Requires(property = OpenSearchConfigurationProperties.PREFIX + ".enabled", notEquals = StringUtils.FALSE, defaultValue = StringUtils.TRUE)
-package io.micronaut.opensearch;
-
-import io.micronaut.context.annotation.Configuration;
-import io.micronaut.context.annotation.Requires;
-import io.micronaut.core.util.StringUtils;
-import io.micronaut.opensearch.conf.OpenSearchConfigurationProperties;
+public interface OpenSearchHealthIndicatorConfiguration extends Toggleable {
+}

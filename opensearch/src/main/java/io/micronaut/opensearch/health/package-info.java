@@ -19,10 +19,11 @@
  * @since 1.0.0
  */
 @Configuration
-@Requires(property = OpenSearchConfigurationProperties.PREFIX + ".enabled", notEquals = StringUtils.FALSE, defaultValue = StringUtils.TRUE)
-package io.micronaut.opensearch;
+@Requires(beans = HealthEndpoint.class)
+@Requires(property = OpenSearchHealthIndicatorConfigurationProperties.PREFIX + ".enabled", notEquals = StringUtils.FALSE, defaultValue = StringUtils.TRUE)
+package io.micronaut.opensearch.health;
 
 import io.micronaut.context.annotation.Configuration;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.util.StringUtils;
-import io.micronaut.opensearch.conf.OpenSearchConfigurationProperties;
+import io.micronaut.management.endpoint.health.HealthEndpoint;

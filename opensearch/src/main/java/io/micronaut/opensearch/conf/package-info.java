@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-2020 original authors
+ * Copyright 2017-2024 original authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,8 @@
  * limitations under the License.
  */
 /**
- * Micronaut OpenSearch integration clases.
- *
+ * Micronaut OpenSearch configuration.
+ * @author Sergio del Amo
  * @since 1.0.0
  */
-@Configuration
-@Requires(property = OpenSearchConfigurationProperties.PREFIX + ".enabled", notEquals = StringUtils.FALSE, defaultValue = StringUtils.TRUE)
-package io.micronaut.opensearch;
-
-import io.micronaut.context.annotation.Configuration;
-import io.micronaut.context.annotation.Requires;
-import io.micronaut.core.util.StringUtils;
-import io.micronaut.opensearch.conf.OpenSearchConfigurationProperties;
+package io.micronaut.opensearch.conf;
