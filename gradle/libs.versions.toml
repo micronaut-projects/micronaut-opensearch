@@ -31,10 +31,6 @@ micronaut-gradle-plugin = "4.3.4"
 micronaut-test-resources="2.3.3"
 micronaut-validation="4.4.3"
 
-apache-http-client = "4.5.14"
-apache-http-async-client = "4.1.5"
-
-
 opensearch-testcontainers = "2.0.1"
 
 # Managed versions appear in the BOM
@@ -51,8 +47,6 @@ managed-opensearch-java = { module = "org.opensearch.client:opensearch-java", ve
 managed-opensearch-rest-client = { module = "org.opensearch.client:opensearch-rest-client", version.ref = "managed-opensearch-rest-client" }
 opensearch-testcontainers = { module = "org.opensearch:opensearch-testcontainers", version.ref = "opensearch-testcontainers" }
 
-apache-http-client = { module = "org.apache.httpcomponents:httpclient", version.ref = "apache-http-client" }
-apache-http-async-client = { module = "org.apache.httpcomponents:httpasyncclient", version.ref = "apache-http-async-client" }
 graal-svm = { module = "org.graalvm.nativeimage:svm", version.ref = "graal-svm" }
 
 awaitility = { module = "org.awaitility:awaitility", version.ref = "awaitility" }
