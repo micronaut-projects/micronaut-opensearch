@@ -2,8 +2,8 @@ package micronaut.example.service;
 
 import java.util.Iterator;
 
-import io.micronaut.context.annotation.Value;
 import jakarta.inject.Singleton;
+import micronaut.example.configuration.AppConfiguration;
 import micronaut.example.exception.MovieServiceException;
 
 import org.opensearch.client.opensearch.OpenSearchClient;
@@ -19,22 +19,19 @@ public class MovieServiceImpl implements MovieService {
 
     private static final Logger LOG = LoggerFactory.getLogger(MovieServiceImpl.class);
 
-    @Value("${opensearch.indexes.movies}")
-    String moviesIndex;
+    private final AppConfiguration appConfiguration;
 
     private final OpenSearchClient client;
 
-    public MovieServiceImpl(OpenSearchClient client) {
+    public MovieServiceImpl(AppConfiguration appConfiguration, OpenSearchClient client) {
+        this.appConfiguration = appConfiguration;
         this.client = client;
     }
 
     @Override
     public String saveMovie(Movie movie) {
         try {
-            IndexRequest<Movie> indexRequest = new IndexRequest.Builder<Movie>()
-                .index(moviesIndex)
-                .document(movie)
-                .build();
+            IndexRequest<Movie> indexRequest = createIndexRequest(movie);
 
             IndexResponse indexResponse = client.index(indexRequest);
             String id = indexResponse.id();
@@ -48,11 +45,18 @@ public class MovieServiceImpl implements MovieService {
         }
     }
 
+    private IndexRequest<Movie> createIndexRequest(Movie movie) {
+        return new IndexRequest.Builder<Movie>()
+            .index(appConfiguration.getMoviesIndexName())
+            .document(movie)
+            .build();
+    }
+
     @Override
     public Movie searchMovies(String title) {
         try {
             SearchResponse<Movie> searchResponse = client.search((s) ->
-                s.index(moviesIndex)
+                s.index(appConfiguration.getMoviesIndexName())
                     .query(q -> q.match(m ->
                         m.field("title")
                          .query(fq -> fq.stringValue(title))
