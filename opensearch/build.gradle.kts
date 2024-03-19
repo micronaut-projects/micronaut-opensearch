@@ -15,8 +15,12 @@ dependencies {
     api(mn.micronaut.http)
 
     implementation(mn.micronaut.jackson.databind)
-}
 
+    testAnnotationProcessor(mn.micronaut.inject.java)
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(mnTest.micronaut.test.junit5)
+    testRuntimeOnly(libs.junit.jupiter.engine)
+}
 
 tasks {
     named<Test>("test") {
