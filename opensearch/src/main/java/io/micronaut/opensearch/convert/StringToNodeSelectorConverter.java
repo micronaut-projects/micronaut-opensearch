@@ -19,9 +19,6 @@ import java.util.Locale;
 import java.util.Optional;
 
 import org.opensearch.client.NodeSelector;
-import org.opensearch.client.RestClientBuilder;
-
-import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.convert.ConversionContext;
 import io.micronaut.core.convert.TypeConverter;
 import jakarta.inject.Singleton;
@@ -30,21 +27,16 @@ import jakarta.inject.Singleton;
  * Converter for CharSequence to NodeSelector.
  */
 @Singleton
-@Requires(classes = RestClientBuilder.class)
 public class StringToNodeSelectorConverter implements TypeConverter<CharSequence, NodeSelector> {
 
     @Override
-    public Optional<NodeSelector> convert(CharSequence object, Class<NodeSelector> targetType,
-            ConversionContext context) {
+    public Optional<NodeSelector> convert(CharSequence object, Class<NodeSelector> targetType, ConversionContext context) {
         String nodeSelector = object.toString().toUpperCase(Locale.ENGLISH);
-        switch (nodeSelector) {
-        case "SKIP_DEDICATED_CLUSTER_MANAGERS":
-        case "SKIP_DEDICATED_MASTERS":
-            return Optional.of(NodeSelector.SKIP_DEDICATED_CLUSTER_MANAGERS);
-        case "ANY":
-            return Optional.of(NodeSelector.ANY);
-        default:
-            return Optional.empty();
-        }
+        return switch (nodeSelector) {
+            case "SKIP_DEDICATED_CLUSTER_MANAGERS" ->
+                    Optional.of(NodeSelector.SKIP_DEDICATED_CLUSTER_MANAGERS);
+            case "ANY" -> Optional.of(NodeSelector.ANY);
+            default -> Optional.empty();
+        };
     }
 }
