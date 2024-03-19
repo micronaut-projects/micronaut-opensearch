@@ -11,7 +11,7 @@ dependencies {
     runtimeOnly(mnLogging.slf4j.jcl.over.slf4j)
     api(mn.micronaut.http)
 
-    implementation(mn.micronaut.jackson.databind)
+    compileOnly(mn.micronaut.jackson.databind)
 
     testAnnotationProcessor(mn.micronaut.inject.java)
     testImplementation(libs.junit.jupiter.api)
