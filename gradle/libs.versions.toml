@@ -34,7 +34,7 @@ micronaut-validation="4.4.3"
 opensearch-testcontainers = "2.0.1"
 
 # Managed versions appear in the BOM
-managed-opensearch-java = "2.6.0"
+managed-opensearch-java = "2.9.1"
 managed-opensearch-rest-client = "2.12.0"
 
 [libraries]
