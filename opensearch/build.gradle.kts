@@ -2,16 +2,14 @@ plugins {
     id("io.micronaut.build.internal.opensearch-module")
 }
 dependencies {
-    compileOnly(mn.micronaut.management)
     api(libs.managed.opensearch.java)
-    
-    implementation(libs.managed.opensearch.rest.client) {
+    compileOnly(mn.micronaut.management)
+    compileOnly(libs.managed.opensearch.rest.client)
+    testImplementation(libs.managed.opensearch.rest.client) {
         exclude(group="commons-logging", module = "commons-logging")
     }
-    runtimeOnly(mnLogging.slf4j.jcl.over.slf4j)
-
+    testRuntimeOnly(mnLogging.slf4j.jcl.over.slf4j)
     compileOnly(mn.micronaut.jackson.databind)
-
     testAnnotationProcessor(mn.micronaut.inject.java)
     testImplementation(libs.junit.jupiter.api)
     testImplementation(mnTest.micronaut.test.junit5)
