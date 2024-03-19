@@ -16,12 +16,6 @@ dependencies {
     testRuntimeOnly(libs.junit.jupiter.engine)
 }
 
-tasks {
-    named<Test>("test") {
-        systemProperty("opensearch.version", libs.versions.managed.opensearch.rest.client.get())
-    }
-}
-
 micronautBuild {
     // new module, so no binary check
     binaryCompatibility {
