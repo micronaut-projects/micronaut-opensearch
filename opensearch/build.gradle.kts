@@ -2,9 +2,6 @@ plugins {
     id("io.micronaut.build.internal.opensearch-module")
 }
 dependencies {
-    annotationProcessor(mn.micronaut.graal)
-
-    compileOnly(libs.graal.svm)
     compileOnly(mn.micronaut.management)
     api(libs.managed.opensearch.java)
     
