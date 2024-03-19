@@ -9,7 +9,6 @@ dependencies {
         exclude(group="commons-logging", module = "commons-logging")
     }
     runtimeOnly(mnLogging.slf4j.jcl.over.slf4j)
-    api(mn.micronaut.http)
 
     compileOnly(mn.micronaut.jackson.databind)
 
