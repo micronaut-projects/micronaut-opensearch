@@ -44,14 +44,6 @@ public interface OpenSearchConfiguration extends Toggleable {
     Header[] getDefaultHeaders();
 
     /**
-     * The timeout that should be honoured in case multiple attempts are made for
-     * the same request. The default value is 30 seconds.
-     *
-     * @return The maximum retry timeout in millis.
-     */
-    int getMaxRetryTimeoutMillis();
-
-    /**
      * The node selector to be used to filter the nodes the client will send
      * requests to among the ones that are set to the client itself. By default, the
      * client sends requests to every configured node.

@@ -59,7 +59,6 @@ public final class OpenSearchConfigurationProperties implements OpenSearchConfig
     @ConfigurationBuilder(configurationPrefix = "request.default")
     protected RequestConfig.Builder requestConfigBuilder = RequestConfig.custom();
 
-    private int maxRetryTimeoutMillis;
     private NodeSelector nodeSelector;
     private HttpHost[] httpHosts = Collections.singletonList(DEFAULT_HOST).toArray(new HttpHost[1]);
     private Header[] defaultHeaders;
@@ -74,11 +73,6 @@ public final class OpenSearchConfigurationProperties implements OpenSearchConfig
     @Override
     public Header[] getDefaultHeaders() {
         return this.defaultHeaders;
-    }
-
-    @Override
-    public int getMaxRetryTimeoutMillis() {
-        return this.maxRetryTimeoutMillis;
     }
 
     @Override
@@ -109,14 +103,7 @@ public final class OpenSearchConfigurationProperties implements OpenSearchConfig
     public void setDefaultHeaders(Header[] defaultHeaders) {
         this.defaultHeaders = defaultHeaders;
     }
-
-    /**
-     * @param maxRetryTimeoutMillis The maximum retry timeout in millis.
-     */
-    public void setMaxRetryTimeoutMillis(int maxRetryTimeoutMillis) {
-        this.maxRetryTimeoutMillis = maxRetryTimeoutMillis;
-    }
-
+    
     /**
      * @param nodeSelector The {@link NodeSelector} to be used, in case of multiple
      *                     nodes.
