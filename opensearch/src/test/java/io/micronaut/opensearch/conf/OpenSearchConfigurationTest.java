@@ -25,6 +25,13 @@ class OpenSearchConfigurationTest {
     }
 
     @Test
+    void beanOfTypeOpenSearchConfigurationCanBeDisabled() {
+        try (ApplicationContext ctx = ApplicationContext.run(Collections.singletonMap("micronaut.opensearch.enabled", StringUtils.FALSE))) {
+            assertFalse(ctx.containsBean(OpenSearchConfiguration.class));
+        }
+    }
+
+    @Test
     void httpHostsDefaultsToHttp1270019200() {
         OpenSearchConfiguration openSearchConfiguration = beanContext.getBean(OpenSearchConfiguration.class);
         assertEquals(1, openSearchConfiguration.getHttpHosts().length);

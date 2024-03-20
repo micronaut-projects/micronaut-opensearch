@@ -28,7 +28,8 @@ import io.micronaut.context.annotation.ConfigurationProperties;
 import jakarta.inject.Inject;
 
 /**
- * Property based Default implementation of the OpenSearch Configuration.
+ * {@link ConfigurationProperties} implementation of {@link OpenSearchConfiguration}.
+ * @since 1.0.0
  */
 @ConfigurationProperties(OpenSearchConfigurationProperties.PREFIX)
 public final class OpenSearchConfigurationProperties implements OpenSearchConfiguration {
@@ -41,7 +42,7 @@ public final class OpenSearchConfigurationProperties implements OpenSearchConfig
     /**
      * The prefix to use for all OpenSearch settings.
      */
-    public static final String PREFIX = "opensearch";
+    public static final String PREFIX = "micronaut.opensearch";
 
     /**
      * Default OpenSearch host.
