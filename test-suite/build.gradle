@@ -11,20 +11,19 @@ configurations.all {
 
 dependencies {
     annotationProcessor(mnValidation.micronaut.validation.processor)
-    implementation(mn.micronaut.context)
-    implementation(mn.micronaut.jackson.databind)
     implementation(mnValidation.micronaut.validation)
 
+    implementation(projects.opensearch)
+    implementation(mn.micronaut.jackson.databind)
     implementation(mn.micronaut.management)
+
+    runtimeOnly(mnLogging.logback.classic)
 
     testImplementation(mn.micronaut.http.client)
 
     testImplementation(libs.awaitility)
-    implementation(projects.opensearch)
-    runtimeOnly(mnLogging.logback.classic)
     testResourcesImplementation(libs.opensearch.testcontainers)
 }
-
 
 mainClassName = "micronaut.example.Application"
 micronaut {
