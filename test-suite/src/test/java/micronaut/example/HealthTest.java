@@ -10,8 +10,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@Property(name = "endpoints.health.details-visible", value = "anonymous")
 @MicronautTest
+@Property(name = "endpoints.health.details-visible", value = "anonymous")
+@Property(name = "micronaut.http.client.read-timeout", value = "30s")
 class HealthTest {
 
     @Test

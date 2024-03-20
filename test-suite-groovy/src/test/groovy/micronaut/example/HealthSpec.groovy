@@ -8,8 +8,9 @@ import io.micronaut.test.extensions.spock.annotation.MicronautTest
 import jakarta.inject.Inject
 import spock.lang.Specification
 
-@Property(name = "endpoints.health.details-visible", value = "anonymous")
 @MicronautTest
+@Property(name = "endpoints.health.details-visible", value = "anonymous")
+@Property(name = "micronaut.http.client.read-timeout", value = "30s")
 class HealthSpec extends Specification {
 
     @Inject

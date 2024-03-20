@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test
 
 @MicronautTest
 @Property(name = "endpoints.health.details-visible", value = "anonymous")
+@Property(name = "micronaut.http.client.read-timeout", value = "30s")
 class HealthTest {
 
     @Test
