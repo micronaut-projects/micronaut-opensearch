@@ -15,7 +15,7 @@ dependencies {
     implementation(mn.micronaut.jackson.databind)
     implementation(mnValidation.micronaut.validation)
     testImplementation(libs.awaitility)
-    implementation(project(":opensearch"))
+    implementation(projects.opensearch)
     runtimeOnly(mnLogging.logback.classic)
     
     testResourcesImplementation(libs.opensearch.testcontainers)
