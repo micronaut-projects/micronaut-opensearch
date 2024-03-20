@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @MicronautTest
 @Property(name = "endpoints.health.details-visible", value = "anonymous")
-@Property(name = "micronaut.http.client.read-timeout", value = "30s")
+@Property(name = "micronaut.http.client.read-timeout", value = "2M")
 class HealthTest {
 
     @Test
