@@ -22,7 +22,7 @@ class OpenSearchTest {
         );
         Movie result = movieService.searchMovies(title);
         Assertions.assertNotNull(result);
-        assertEquals(title, result.getTitle());
-        assertEquals(imdb, result.getImdb());
+        assertEquals(title, result.title());
+        assertEquals(imdb, result.imdb());
     }
 }
