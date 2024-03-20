@@ -15,39 +15,19 @@
  */
 package io.micronaut.opensearch;
 
-import io.micronaut.opensearch.conf.OpenSearchConfiguration;
-import org.opensearch.client.RestClient;
-import org.opensearch.client.RestClientBuilder;
-import org.opensearch.client.json.jackson.JacksonJsonpMapper;
+import io.micronaut.context.annotation.Factory;
+import io.micronaut.core.annotation.Internal;
+import jakarta.inject.Singleton;
 import org.opensearch.client.opensearch.OpenSearchAsyncClient;
 import org.opensearch.client.opensearch.OpenSearchClient;
 import org.opensearch.client.transport.OpenSearchTransport;
-import org.opensearch.client.transport.rest_client.RestClientTransport;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import io.micronaut.context.annotation.Bean;
-import io.micronaut.context.annotation.Factory;
-import io.micronaut.context.annotation.Requires;
-import io.micronaut.core.util.ArrayUtils;
-import jakarta.inject.Singleton;
 
 /**
  * Factory responsible for creating OpenSearch clients.
  */
-@Requires(beans = OpenSearchConfiguration.class)
 @Factory
-public class DefaultOpenSearchClientFactory {
-
-    /**
-     * @param openSearchConfiguration OpenSearch Configuration.
-     * @return The OpenSearch Rest Client
-     */
-    @Bean(preDestroy = "close")
-    RestClient restClient(OpenSearchConfiguration openSearchConfiguration) {
-        return restClientBuilder(openSearchConfiguration).build();
-    }
-
+@Internal
+final class DefaultOpenSearchClientFactory {
     /**
      * @param transport The {@link OpenSearchTransport} object.
      * @return The OpenSearchClient.
@@ -67,46 +47,4 @@ public class DefaultOpenSearchClientFactory {
     OpenSearchAsyncClient openSearchAsyncClient(OpenSearchTransport transport) {
         return new OpenSearchAsyncClient(transport);
     }
-
-    /**
-     * @param openSearchConfiguration The
-     *                                {@link OpenSearchConfiguration}
-     *                                object.
-     * @param objectMapper            The {@link ObjectMapper} object.
-     * @return The {@link OpenSearchTransport}.
-     * @since 4.2.0
-     */
-    @Singleton
-    @Bean(preDestroy = "close")
-    OpenSearchTransport openSearchTransport(OpenSearchConfiguration openSearchConfiguration,
-                                            ObjectMapper objectMapper) {
-        RestClient restClient = restClientBuilder(openSearchConfiguration).build();
-
-        OpenSearchTransport transport = new RestClientTransport(restClient, new JacksonJsonpMapper(objectMapper));
-        return transport;
-    }
-
-    /**
-     * @param openSearchConfiguration The
-     *                                {@link OpenSearchConfiguration}
-     *                                object
-     * @return The {@link RestClientBuilder}
-     */
-    protected RestClientBuilder restClientBuilder(OpenSearchConfiguration openSearchConfiguration) {
-        RestClientBuilder builder = RestClient.builder(openSearchConfiguration.getHttpHosts())
-            .setRequestConfigCallback(requestConfigBuilder -> {
-                requestConfigBuilder = openSearchConfiguration.getRequestConfigBuilder();
-                return requestConfigBuilder;
-            }).setHttpClientConfigCallback(httpClientBuilder -> {
-                httpClientBuilder = openSearchConfiguration.getHttpAsyncClientBuilder();
-                return httpClientBuilder;
-            });
-
-        if (ArrayUtils.isNotEmpty(openSearchConfiguration.getDefaultHeaders())) {
-            builder.setDefaultHeaders(openSearchConfiguration.getDefaultHeaders());
-        }
-
-        return builder;
-    }
-
 }

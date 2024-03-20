@@ -49,13 +49,13 @@ public final class OpenSearchConfigurationProperties implements OpenSearchConfig
      */
     private static final HttpHost DEFAULT_HOST = new HttpHost("127.0.0.1", 9200, "http");
 
-    protected HttpAsyncClientBuilder httpAsyncClientBuilder;
+    private HttpAsyncClientBuilder httpAsyncClientBuilder;
 
     /**
      * The default request configurations.
      */
     @ConfigurationBuilder(configurationPrefix = "request.default")
-    protected RequestConfig.Builder requestConfigBuilder = RequestConfig.custom();
+    private RequestConfig.Builder requestConfigBuilder = RequestConfig.custom();
 
     private NodeSelector nodeSelector;
     private HttpHost[] httpHosts = Collections.singletonList(DEFAULT_HOST).toArray(new HttpHost[1]);
@@ -68,9 +68,19 @@ public final class OpenSearchConfigurationProperties implements OpenSearchConfig
         return this.httpHosts;
     }
 
-    @Override
-    public Header[] getDefaultHeaders() {
-        return this.defaultHeaders;
+    /**
+     * @param httpHosts One or more hosts that client will connect to.
+     */
+    public void setHttpHosts(HttpHost[] httpHosts) {
+        this.httpHosts = httpHosts;
+    }
+
+    /**
+     * @param nodeSelector The {@link NodeSelector} to be used, in case of multiple
+     *                     nodes.
+     */
+    public void setNodeSelector(NodeSelector nodeSelector) {
+        this.nodeSelector = nodeSelector;
     }
 
     @Override
@@ -89,10 +99,16 @@ public final class OpenSearchConfigurationProperties implements OpenSearchConfig
     }
 
     /**
-     * @param httpHosts One or more hosts that client will connect to.
+     * @param httpAsyncClientBuilder The {@link HttpAsyncClientBuilder} bean
      */
-    public void setHttpHosts(HttpHost[] httpHosts) {
-        this.httpHosts = httpHosts;
+    @Inject
+    public void setHttpAsyncClientBuilder(HttpAsyncClientBuilder httpAsyncClientBuilder) {
+        this.httpAsyncClientBuilder = httpAsyncClientBuilder;
+    }
+
+    @Override
+    public Header[] getDefaultHeaders() {
+        return this.defaultHeaders;
     }
 
     /**
@@ -100,22 +116,6 @@ public final class OpenSearchConfigurationProperties implements OpenSearchConfig
      */
     public void setDefaultHeaders(Header[] defaultHeaders) {
         this.defaultHeaders = defaultHeaders;
-    }
-    
-    /**
-     * @param nodeSelector The {@link NodeSelector} to be used, in case of multiple
-     *                     nodes.
-     */
-    public void setNodeSelector(NodeSelector nodeSelector) {
-        this.nodeSelector = nodeSelector;
-    }
-
-    /**
-     * @param httpAsyncClientBuilder The {@link HttpAsyncClientBuilder} bean
-     */
-    @Inject
-    public void setHttpAsyncClientBuilder(HttpAsyncClientBuilder httpAsyncClientBuilder) {
-        this.httpAsyncClientBuilder = httpAsyncClientBuilder;
     }
 
     @Override
