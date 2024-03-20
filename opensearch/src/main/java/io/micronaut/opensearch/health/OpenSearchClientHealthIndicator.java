@@ -15,6 +15,7 @@
  */
 package io.micronaut.opensearch.health;
 
+import io.micronaut.core.annotation.Nullable;
 import io.micronaut.health.HealthStatus;
 import io.micronaut.management.health.indicator.HealthIndicator;
 import io.micronaut.management.health.indicator.HealthResult;
@@ -59,30 +60,39 @@ public class OpenSearchClientHealthIndicator implements HealthIndicator {
      */
     @Override
     public Publisher<HealthResult> getResult() {
-
         return (subscriber -> {
-            final HealthResult.Builder resultBuilder = HealthResult.builder(NAME);
             try {
                 client.cluster().health().handle((health, exception) -> {
-                    if (exception != null) {
-                        subscriber.onNext(resultBuilder.status(DOWN).exception(exception).build());
-                        subscriber.onComplete();
-                    } else {
-                        HealthStatus status = health
-                                .status() == org.opensearch.client.opensearch._types.HealthStatus.Red ? DOWN : UP;
-                        subscriber.onNext(resultBuilder.status(status).details(healthResultDetails(health)).build());
-                        subscriber.onComplete();
-                    }
+                    subscriber.onNext(healthResult(health, exception));
+                    subscriber.onComplete();
                     return health;
                 });
             } catch (IOException ex) {
-                subscriber.onNext(resultBuilder.status(DOWN).exception(ex).build());
+                subscriber.onNext(healthResult(null, ex));
                 subscriber.onComplete();
             }
         });
     }
 
-    private String healthResultDetails(HealthResponse response) {
+    /**
+     *
+     * @param healthResponse HealthResponse
+     * @param exception Exception
+     * @return Health Result
+     */
+    static HealthResult healthResult(@Nullable HealthResponse healthResponse, @Nullable Throwable exception) {
+        HealthResult.Builder resultBuilder = HealthResult.builder(NAME);
+        if (exception != null) {
+            return resultBuilder.status(DOWN).exception(exception).build();
+        }
+        if (healthResponse == null) {
+            return resultBuilder.status(DOWN).build();
+        }
+        HealthStatus status = healthResponse.status() == org.opensearch.client.opensearch._types.HealthStatus.Red ? DOWN : UP;
+        return resultBuilder.status(status).details(healthResultDetails(healthResponse)).build();
+    }
+
+    private static String healthResultDetails(HealthResponse response) {
         return "{" + "\"cluster_name\":\"" + response.clusterName() + "\"," + "\"status\":\""
                 + response.status().name().toLowerCase(Locale.ENGLISH) + "\"," + "\"timed_out\":" + response.timedOut()
                 + "," + "\"number_of_nodes\":" + response.numberOfNodes() + "," + "\"number_of_data_nodes\":"

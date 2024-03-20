@@ -14,10 +14,14 @@ dependencies {
     implementation(mn.micronaut.context)
     implementation(mn.micronaut.jackson.databind)
     implementation(mnValidation.micronaut.validation)
+
+    implementation(mn.micronaut.management)
+
+    testImplementation(mn.micronaut.http.client)
+
     testImplementation(libs.awaitility)
     implementation(projects.opensearch)
     runtimeOnly(mnLogging.logback.classic)
-    
     testResourcesImplementation(libs.opensearch.testcontainers)
 }
 
@@ -26,6 +30,7 @@ mainClassName = "micronaut.example.Application"
 micronaut {
     version libs.versions.micronaut.platform.get()
     coreVersion.set(libs.versions.micronaut.asProvider().get())
+    runtime "netty"
     testRuntime "junit5"
     enableNativeImage false
     processing {

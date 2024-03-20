@@ -10,6 +10,8 @@ dependencies {
     }
     testRuntimeOnly(mnLogging.slf4j.jcl.over.slf4j)
     compileOnly(mn.micronaut.jackson.databind)
+
+    testImplementation(mn.micronaut.management)
     testAnnotationProcessor(mn.micronaut.inject.java)
     testImplementation(libs.junit.jupiter.api)
     testImplementation(mnTest.micronaut.test.junit5)
