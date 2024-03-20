@@ -20,6 +20,11 @@ import io.micronaut.core.convert.MutableConversionService;
 import io.micronaut.core.convert.TypeConverterRegistrar;
 import org.opensearch.client.NodeSelector;
 
+/**
+ * {@link TypeConverterRegistrar} for OpenSearch classes.
+ * @author Sergio del Amo
+ * @since 1.0.0
+ */
 @Internal
 public final class OpenSearchTypeConverterRegistrar implements TypeConverterRegistrar {
     @Override

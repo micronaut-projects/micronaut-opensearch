@@ -21,6 +21,12 @@ import org.apache.http.Header;
 import org.apache.http.HttpHost;
 import io.micronaut.core.convert.TypeConverterRegistrar;
 
+
+/**
+ * {@link TypeConverterRegistrar} for Apache HTTP classes conversions.
+ * @author Sergio del Amo
+ * @since 1.0.0
+ */
 @Internal
 public final class ApacheHttpTypeConverterRegistrar implements TypeConverterRegistrar {
     @Override
