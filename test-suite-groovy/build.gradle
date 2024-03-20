@@ -4,12 +4,6 @@ plugins {
     id("io.micronaut.test-resources")
 }
 
-configurations.all {
-    resolutionStrategy.dependencySubstitution {
-        substitute module('io.micronaut.opensearch:micronaut-opensearch') using project(':opensearch')
-    }
-}
-
 dependencies {
     implementation("io.micronaut.groovy:micronaut-runtime-groovy")
 

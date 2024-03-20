@@ -3,12 +3,6 @@ plugins {
     id("io.micronaut.test-resources")
 }
 
-configurations.all {
-    resolutionStrategy.dependencySubstitution {
-        substitute module('io.micronaut.opensearch:micronaut-opensearch') using project(':opensearch')
-    }
-}
-
 dependencies {
     annotationProcessor(mnValidation.micronaut.validation.processor)
     implementation(mnValidation.micronaut.validation)
