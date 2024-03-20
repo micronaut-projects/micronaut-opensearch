@@ -22,17 +22,14 @@ import org.apache.http.HttpHost;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.impl.nio.client.HttpAsyncClientBuilder;
 import org.opensearch.client.NodeSelector;
-import org.opensearch.client.RestClientBuilder;
 
 import io.micronaut.context.annotation.ConfigurationBuilder;
 import io.micronaut.context.annotation.ConfigurationProperties;
-import io.micronaut.context.annotation.Requires;
 import jakarta.inject.Inject;
 
 /**
  * Property based Default implementation of the OpenSearch Configuration.
  */
-@Requires(classes = RestClientBuilder.class)
 @ConfigurationProperties(OpenSearchConfigurationProperties.PREFIX)
 public final class OpenSearchConfigurationProperties implements OpenSearchConfiguration {
     /**
