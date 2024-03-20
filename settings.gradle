@@ -14,6 +14,7 @@ rootProject.name = 'opensearch-parent'
 include 'opensearch'
 include 'opensearch-bom'
 include 'test-suite'
+include 'test-suite-groovy'
 
 enableFeaturePreview 'TYPESAFE_PROJECT_ACCESSORS'
 
