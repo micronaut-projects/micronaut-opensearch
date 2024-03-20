@@ -15,10 +15,12 @@ include 'opensearch'
 include 'opensearch-bom'
 include 'test-suite'
 include 'test-suite-groovy'
+include 'test-suite-kotlin'
 
 enableFeaturePreview 'TYPESAFE_PROJECT_ACCESSORS'
 
 micronautBuild {
     importMicronautCatalog()
     importMicronautCatalog("micronaut-validation")
+    importMicronautCatalog("micronaut-kotlin")
 }

@@ -20,6 +20,7 @@ micronaut = "4.3.11"
 micronaut-platform = "4.3.6"
 micronaut-docs = "2.0.0"
 micronaut-test = "4.2.1"
+micronaut-kotlin = "4.2.0"
 micronaut-logging = "1.2.3"
 micronaut-test-resources="2.3.3"
 micronaut-validation="4.4.3"
@@ -32,10 +33,11 @@ opensearch-testcontainers = "2.0.1"
 managed-opensearch-java = "2.9.1"
 managed-opensearch-rest-client = "2.12.0"
 
+kotlin = "1.9.23"
 [libraries]
 # Core
 micronaut-core = { module = 'io.micronaut:micronaut-core-bom', version.ref = 'micronaut' }
-
+micronaut-kotlin = { module = "io.micronaut.kotlin:micronaut-kotlin-bom", version.ref = "micronaut-kotlin" }
 micronaut-test-resources = { module = "io.micronaut.testresources:micronaut-test-resources-bom", version.ref = "micronaut-test-resources" }
 micronaut-validation = { module = "io.micronaut.validation:micronaut-validation-bom", version.ref = "micronaut-validation" }
 managed-opensearch-java = { module = "org.opensearch.client:opensearch-java", version.ref = "managed-opensearch-java" }
@@ -44,9 +46,13 @@ opensearch-testcontainers = { module = "org.opensearch:opensearch-testcontainers
 
 awaitility = { module = "org.awaitility:awaitility", version.ref = "awaitility" }
 gradle-micronaut = { module = "io.micronaut.gradle:micronaut-gradle-plugin", version.ref = "micronaut-gradle-plugin" }
-
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine" }
 [bundles]
 
 [plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-allopen = { id = "org.jetbrains.kotlin.plugin.allopen", version.ref = "kotlin" }
