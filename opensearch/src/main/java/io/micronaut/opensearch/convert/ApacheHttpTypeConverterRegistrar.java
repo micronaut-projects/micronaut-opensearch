@@ -16,23 +16,16 @@
 package io.micronaut.opensearch.convert;
 
 import io.micronaut.core.annotation.Internal;
-import io.micronaut.core.convert.ConversionContext;
-import io.micronaut.core.convert.TypeConverter;
+import io.micronaut.core.convert.MutableConversionService;
+import org.apache.http.Header;
 import org.apache.http.HttpHost;
+import io.micronaut.core.convert.TypeConverterRegistrar;
 
-import java.net.URI;
-import java.util.Optional;
-
-/**
- * Converter for CharSequence to HTTP host.
- */
 @Internal
-final class StringToHttpHostConverter implements TypeConverter<CharSequence, HttpHost> {
-
+public final class ApacheHttpTypeConverterRegistrar implements TypeConverterRegistrar {
     @Override
-    public Optional<HttpHost> convert(CharSequence object, Class<HttpHost> targetType, ConversionContext context) {
-        String uriString = object.toString();
-        URI uri = URI.create(uriString);
-        return Optional.of(new HttpHost(uri.getHost(), uri.getPort(), uri.getScheme()));
+    public void register(MutableConversionService conversionService) {
+        conversionService.addConverter(CharSequence.class, HttpHost.class, new StringToHttpHostConverter());
+        conversionService.addConverter(CharSequence.class, Header.class, new StringToHeaderConverter());
     }
 }

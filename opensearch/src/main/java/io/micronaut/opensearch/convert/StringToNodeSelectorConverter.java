@@ -18,16 +18,16 @@ package io.micronaut.opensearch.convert;
 import java.util.Locale;
 import java.util.Optional;
 
+import io.micronaut.core.annotation.Internal;
 import org.opensearch.client.NodeSelector;
 import io.micronaut.core.convert.ConversionContext;
 import io.micronaut.core.convert.TypeConverter;
-import jakarta.inject.Singleton;
 
 /**
  * Converter for CharSequence to NodeSelector.
  */
-@Singleton
-public class StringToNodeSelectorConverter implements TypeConverter<CharSequence, NodeSelector> {
+@Internal
+final class StringToNodeSelectorConverter implements TypeConverter<CharSequence, NodeSelector> {
 
     @Override
     public Optional<NodeSelector> convert(CharSequence object, Class<NodeSelector> targetType, ConversionContext context) {

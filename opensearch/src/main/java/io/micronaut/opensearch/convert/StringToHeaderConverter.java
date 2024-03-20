@@ -15,23 +15,19 @@
  */
 package io.micronaut.opensearch.convert;
 
-import java.util.Optional;
-
-import org.apache.http.Header;
-import org.apache.http.message.BasicHeader;
-import org.opensearch.client.RestClientBuilder;
-
-import io.micronaut.context.annotation.Requires;
+import io.micronaut.core.annotation.Internal;
 import io.micronaut.core.convert.ConversionContext;
 import io.micronaut.core.convert.TypeConverter;
-import jakarta.inject.Singleton;
+import org.apache.http.Header;
+import org.apache.http.message.BasicHeader;
+
+import java.util.Optional;
 
 /**
  * Converter for CharSequence to Header. 
  */
-@Singleton
-@Requires(classes = RestClientBuilder.class)
-public class StringToHeaderConverter implements TypeConverter<CharSequence, Header> {
+@Internal
+final class StringToHeaderConverter implements TypeConverter<CharSequence, Header> {
 
     @Override
     public Optional<Header> convert(CharSequence object, Class<Header> targetType, ConversionContext context) {

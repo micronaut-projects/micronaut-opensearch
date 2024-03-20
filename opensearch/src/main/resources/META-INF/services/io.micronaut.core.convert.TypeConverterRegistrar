@@ -1,0 +1,2 @@
+io.micronaut.opensearch.convert.OpenSearchTypeConverterRegistrar
+io.micronaut.opensearch.convert.ApacheHttpTypeConverterRegistrar
