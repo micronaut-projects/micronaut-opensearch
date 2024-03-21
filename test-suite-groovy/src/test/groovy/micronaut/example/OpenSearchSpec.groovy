@@ -2,8 +2,8 @@ package micronaut.example
 
 import io.micronaut.test.extensions.spock.annotation.MicronautTest
 import jakarta.inject.Inject
-import example.micronaut.service.Movie
-import example.micronaut.service.MovieService
+import micronaut.example.service.Movie
+import micronaut.example.service.MovieService
 import spock.lang.Specification
 import spock.util.concurrent.PollingConditions
 

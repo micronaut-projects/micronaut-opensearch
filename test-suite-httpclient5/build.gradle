@@ -1,0 +1,28 @@
+plugins {
+    id("io.micronaut.application")
+    id("io.micronaut.test-resources")
+}
+
+dependencies {
+    testAnnotationProcessor(mnSerde.micronaut.serde.processor)
+    testImplementation(mnSerde.micronaut.serde.jackson)
+    testAnnotationProcessor(mnValidation.micronaut.validation.processor)
+    testImplementation(mnValidation.micronaut.validation)
+    testImplementation(projects.opensearchHttpclient5)
+    testImplementation(mn.micronaut.management)
+    testRuntimeOnly(mnLogging.logback.classic)
+    testImplementation(mn.micronaut.http.client)
+    testImplementation(libs.awaitility)
+    testResourcesImplementation(libs.managed.opensearch.testcontainers)
+}
+
+mainClassName = "micronaut.example.Application"
+micronaut {
+    version libs.versions.micronaut.platform.get()
+    runtime "netty"
+    testRuntime "junit5"
+    testResources {
+        clientTimeout = 300
+    }
+}
+

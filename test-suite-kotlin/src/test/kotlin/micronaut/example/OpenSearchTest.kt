@@ -1,7 +1,7 @@
 package micronaut.example;
 
-import example.micronaut.service.Movie
-import example.micronaut.service.MovieService
+import micronaut.example.service.Movie
+import micronaut.example.service.MovieService
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import java.util.concurrent.TimeUnit
 import org.awaitility.Awaitility.await

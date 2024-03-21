@@ -4,6 +4,7 @@ import io.micronaut.context.BeanContext;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
+import org.opensearch.client.opensearch.OpenSearchAsyncClient;
 import org.opensearch.client.opensearch.OpenSearchClient;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,6 +16,11 @@ class OpenSearchClientFactoryTest {
 
     @Test
     void beanOfTypeOpenSearchClientExists() {
-        assertTrue(beanContext.containsBean(OpenSearchClient.class));
+        assertFalse(beanContext.containsBean(OpenSearchClient.class));
+    }
+
+    @Test
+    void beanOfTypeOpenSearchAsyncClientExists() {
+        assertFalse(beanContext.containsBean(OpenSearchAsyncClient.class));
     }
 }

@@ -3,3 +3,10 @@ Micronaut OpenSearch simplifies integration with https://opensearch.org[OpenSear
 ____
 OpenSearch is the flexible, scalable, open-source way to build solutions for data-intensive applications.
 ____
+
+== OpenSearchClient
+
+Once you have integrated Micronaut OpenSearch, you are able to inject a bean of
+type `org.opensearch.client.opensearch.OpenSearchClient` or `org.opensearch.client.opensearch.OpenSearchAsyncClient`.
+
+snippet::micronaut.example.service.MovieServiceImpl[]

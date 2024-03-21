@@ -1,5 +1,7 @@
 introduction: Introduction
-dependency: Dependency
+openSearchAmazon: OpenSearch Amazon
+openSearchHttpClient5: OpenSearch using Apache HttpClient 5 Transport
+openSearchRestClient: OpenSearch RestClient
 health: Health
 releaseHistory: Release History
 repository: Repository

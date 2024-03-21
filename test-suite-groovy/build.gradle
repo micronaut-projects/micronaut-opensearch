@@ -15,7 +15,7 @@ dependencies {
     annotationProcessor(mnValidation.micronaut.validation.processor)
     implementation(mnValidation.micronaut.validation)
 
-    implementation(projects.opensearch)
+    implementation(projects.opensearchRestclient)
     implementation(mn.micronaut.jackson.databind)
     implementation(mn.micronaut.management)
 
@@ -23,7 +23,7 @@ dependencies {
 
     testImplementation(mn.micronaut.http.client)
 
-    testResourcesImplementation(libs.opensearch.testcontainers)
+    testResourcesImplementation(libs.managed.opensearch.testcontainers)
 }
 
 
