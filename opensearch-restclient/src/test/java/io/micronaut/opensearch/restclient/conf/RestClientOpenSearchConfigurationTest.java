@@ -30,6 +30,9 @@ class RestClientOpenSearchConfigurationTest {
 
     @Test
     void beanOfTypeRestClientOpenSearchConfigurationCanBeDisabled() {
+        try (ApplicationContext ctx = ApplicationContext.run(Collections.singletonMap("micronaut.opensearch.rest-client.enabled", StringUtils.FALSE))) {
+            assertFalse(ctx.containsBean(RestClientOpenSearchConfiguration.class));
+        }
         try (ApplicationContext ctx = ApplicationContext.run(Collections.singletonMap("micronaut.opensearch.enabled", StringUtils.FALSE))) {
             assertFalse(ctx.containsBean(RestClientOpenSearchConfiguration.class));
         }

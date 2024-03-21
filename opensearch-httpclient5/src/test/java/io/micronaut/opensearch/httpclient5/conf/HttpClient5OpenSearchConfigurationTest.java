@@ -31,6 +31,9 @@ class HttpClient5OpenSearchConfigurationTest {
         try (ApplicationContext ctx = ApplicationContext.run(Collections.singletonMap("micronaut.opensearch.enabled", StringUtils.FALSE))) {
             assertFalse(ctx.containsBean(HttpClient5OpenSearchConfiguration.class));
         }
+        try (ApplicationContext ctx = ApplicationContext.run(Collections.singletonMap("micronaut.opensearch.httpclient5.enabled", StringUtils.FALSE))) {
+            assertFalse(ctx.containsBean(HttpClient5OpenSearchConfiguration.class));
+        }
     }
     @Test
     void httpHostsDefaultsToHttp1270019200() {
