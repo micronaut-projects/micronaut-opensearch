@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlin.allopen)
     id("io.micronaut.test-resources")
+    id("io.micronaut.graalvm")
 }
 
 repositories {
