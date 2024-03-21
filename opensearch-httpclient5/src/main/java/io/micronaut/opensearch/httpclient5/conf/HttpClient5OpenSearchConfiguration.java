@@ -19,7 +19,9 @@ import io.micronaut.core.util.Toggleable;
 import org.apache.hc.core5.http.HttpHost;
 
 /**
- * Generic interface for the OpenSearch Configuration beans.
+ * Micronaut OpenSearch Configuration for the usage of Apache HttpClient 5 Transport.
+ * @author Sergio del Amo
+ * @since 1.0.0
  */
 public interface HttpClient5OpenSearchConfiguration extends Toggleable {
 
