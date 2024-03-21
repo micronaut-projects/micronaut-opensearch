@@ -5,21 +5,21 @@ plugins {
 }
 
 dependencies {
-    implementation("io.micronaut.groovy:micronaut-runtime-groovy")
+    testImplementation("io.micronaut.groovy:micronaut-runtime-groovy")
 
-    implementation(libs.managed.opensearch.rest.client) {
+    testImplementation(libs.managed.opensearch.rest.client) {
         exclude(group: "commons-logging", module: "commons-logging")
     }
-    runtimeOnly(mnLogging.slf4j.jcl.over.slf4j)
+    testRuntimeOnly(mnLogging.slf4j.jcl.over.slf4j)
 
-    annotationProcessor(mnValidation.micronaut.validation.processor)
-    implementation(mnValidation.micronaut.validation)
+    testCompileOnly(mnValidation.micronaut.validation.processor)
+    testImplementation(mnValidation.micronaut.validation)
 
-    implementation(projects.opensearchRestclient)
-    implementation(mn.micronaut.jackson.databind)
-    implementation(mn.micronaut.management)
+    testImplementation(projects.opensearchRestclient)
+    testImplementation(mn.micronaut.jackson.databind)
+    testImplementation(mn.micronaut.management)
 
-    runtimeOnly(mnLogging.logback.classic)
+    testRuntimeOnly(mnLogging.logback.classic)
 
     testImplementation(mn.micronaut.http.client)
 

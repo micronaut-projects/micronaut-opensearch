@@ -11,8 +11,8 @@ repositories {
 }
 
 dependencies {
-    kapt(mn.micronaut.inject.java)
-    kapt(mnValidation.micronaut.validation.processor)
+    kaptTest(mn.micronaut.inject.java)
+    kaptTest(mnValidation.micronaut.validation.processor)
 
     testImplementation(projects.opensearchRestclient)
 
@@ -25,7 +25,7 @@ dependencies {
 
     testImplementation(mnValidation.micronaut.validation)
 
-    runtimeOnly(mnLogging.logback.classic)
+    testRuntimeOnly(mnLogging.logback.classic)
 
     kaptTest(mn.micronaut.inject.java)
 
