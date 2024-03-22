@@ -15,6 +15,7 @@
  */
 package io.micronaut.opensearch.aws;
 
+import io.micronaut.core.annotation.Internal;
 import io.micronaut.core.convert.MutableConversionService;
 import io.micronaut.core.convert.TypeConverterRegistrar;
 import software.amazon.awssdk.regions.Region;
@@ -24,10 +25,11 @@ import software.amazon.awssdk.regions.Region;
  * @author Sergio del Amo
  * @since 1.0.0
  */
+@Internal
 public class RegionConverterRegistrar implements TypeConverterRegistrar {
+
     @Override
     public void register(MutableConversionService conversionService) {
         conversionService.addConverter(CharSequence.class, Region.class, new StringToRegionConverter());
-
     }
 }
