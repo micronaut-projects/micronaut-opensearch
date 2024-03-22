@@ -1,5 +1,6 @@
-package io.micronaut.opensearch;
+package io.micronaut.opensearch.testresources;
 
+import io.micronaut.core.annotation.NonNull;
 import io.micronaut.testresources.testcontainers.AbstractTestContainersProvider;
 import org.opensearch.testcontainers.OpensearchContainer;
 import org.testcontainers.utility.DockerImageName;
@@ -14,14 +15,19 @@ import java.util.Optional;
  * A test resource provider which will spawn an OpenSearch test container.
  */
 public class OpenSearchTestResourceProvider extends AbstractTestContainersProvider<OpensearchContainer<?>> {
-    public static final String OPENSEARCH_HOSTS = "micronaut.opensearch.rest-client.http-hosts";
+
     public static final String SIMPLE_NAME = "opensearch";
     public static final String DEFAULT_IMAGE = "opensearchproject/opensearch";
     public static final String DISPLAY_NAME = "OpenSearch";
 
+    @NonNull
+    protected String getProperty() {
+        return "micronaut.opensearch.rest-client.http-hosts";
+    }
+
     @Override
     public List<String> getResolvableProperties(Map<String, Collection<String>> propertyEntries, Map<String, Object> testResourcesConfig) {
-        return Collections.singletonList(OPENSEARCH_HOSTS);
+        return Collections.singletonList(getProperty());
     }
 
     @Override
@@ -48,7 +54,7 @@ public class OpenSearchTestResourceProvider extends AbstractTestContainersProvid
 
     @Override
     protected Optional<String> resolveProperty(String propertyName, OpensearchContainer container) {
-        if (OPENSEARCH_HOSTS.equals(propertyName)) {
+        if (getProperty().equals(propertyName)) {
             return Optional.of(container.getHttpHostAddress());
         }
         return Optional.empty();
@@ -56,6 +62,6 @@ public class OpenSearchTestResourceProvider extends AbstractTestContainersProvid
 
     @Override
     protected boolean shouldAnswer(String propertyName, Map<String, Object> requestedProperties, Map<String, Object> testResourcesConfig) {
-        return OPENSEARCH_HOSTS.equals(propertyName);
+        return getProperty().equals(propertyName);
     }
 }

@@ -37,7 +37,7 @@ dependencies {
 
     testRuntimeOnly(libs.junit.jupiter.engine)
 
-    testResourcesImplementation(libs.managed.opensearch.testcontainers)
+    testResourcesImplementation(projects.testSuiteOpensearchContainer)
 }
 
 tasks.test {

@@ -20,6 +20,7 @@ include 'test-suite-httpclient5'
 include 'test-suite'
 include 'test-suite-groovy'
 include 'test-suite-kotlin'
+include 'test-suite-opensearch-container'
 
 enableFeaturePreview 'TYPESAFE_PROJECT_ACCESSORS'
 
@@ -29,4 +30,5 @@ micronautBuild {
     importMicronautCatalog("micronaut-kotlin")
     importMicronautCatalog("micronaut-aws")
     importMicronautCatalog("micronaut-serde")
+    importMicronautCatalog("micronaut-test-resources")
 }

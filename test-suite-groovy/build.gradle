@@ -23,7 +23,7 @@ dependencies {
 
     testImplementation(mn.micronaut.http.client)
 
-    testResourcesImplementation(libs.managed.opensearch.testcontainers)
+    testResourcesImplementation(projects.testSuiteOpensearchContainer)
 }
 
 

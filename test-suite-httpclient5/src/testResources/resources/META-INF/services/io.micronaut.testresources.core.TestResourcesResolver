@@ -1,1 +1,1 @@
-io.micronaut.opensearch.OpenSearchTestResourceProvider
+io.micronaut.opensearch.Http5ClientOpenSearchTestResourceProvider

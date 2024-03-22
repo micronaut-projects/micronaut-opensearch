@@ -15,7 +15,7 @@ dependencies {
     testImplementation(mn.micronaut.http.client)
 
     testImplementation(libs.awaitility)
-    testResourcesImplementation(libs.managed.opensearch.testcontainers)
+    testResourcesImplementation(projects.testSuiteOpensearchContainer)
 }
 
 mainClassName = "micronaut.example.Application"
