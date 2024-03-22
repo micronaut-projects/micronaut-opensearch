@@ -1,6 +1,6 @@
-package micronaut.example.service;
+package micronaut.example.service
 
-import io.micronaut.core.annotation.Introspected;
+import io.micronaut.core.annotation.Introspected
 
 @Introspected
 class Movie {

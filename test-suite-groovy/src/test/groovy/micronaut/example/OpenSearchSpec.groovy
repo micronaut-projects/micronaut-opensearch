@@ -18,7 +18,7 @@ class OpenSearchSpec extends Specification {
         String title = "Die Hard"
 
         when:
-        movieService.saveMovie(new Movie(imdb: "KJFDOD", title: title));
+        movieService.saveMovie(new Movie(imdb: "KJFDOD", title: title))
 
         then:
         new PollingConditions().eventually {
@@ -26,7 +26,7 @@ class OpenSearchSpec extends Specification {
         }
 
         when:
-        Movie result = movieService.searchMovies(title);
+        Movie result = movieService.searchMovies(title)
 
         then:
         result
