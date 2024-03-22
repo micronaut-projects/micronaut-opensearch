@@ -12,7 +12,10 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 @Singleton
-class MovieServiceImpl(val appConfiguration: AppConfiguration, val client: OpenSearchClient) : MovieService {
+class MovieServiceImpl(
+    private val appConfiguration: AppConfiguration,
+    private val client: OpenSearchClient
+) : MovieService {
 
     override fun saveMovie(movie: Movie): String {
         try {

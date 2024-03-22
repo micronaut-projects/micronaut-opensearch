@@ -1,4 +1,4 @@
-package micronaut.example;
+package micronaut.example
 
 import io.micronaut.context.annotation.Property
 import io.micronaut.http.client.HttpClient

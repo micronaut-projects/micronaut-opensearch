@@ -1,4 +1,4 @@
-package micronaut.example;
+package micronaut.example
 
 import micronaut.example.service.Movie
 import micronaut.example.service.MovieService
