@@ -5,8 +5,8 @@ import software.amazon.awssdk.regions.Region;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class StringToRegionConverterTest {
 
