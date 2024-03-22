@@ -73,9 +73,9 @@ final class RestClientFactory {
                                         HttpAsyncClientBuilder httpAsyncClientBuilder,
                                         RequestConfig.Builder requestConfigBuilder) {
         RestClientBuilder builder = RestClient.builder(conf.getHttpHosts())
-                .setRequestConfigCallback(requetConfigB -> {
-                    requetConfigB = requestConfigBuilder;
-                    return requetConfigB;
+                .setRequestConfigCallback(requestConfigB -> {
+                    requestConfigB = requestConfigBuilder;
+                    return requestConfigB;
                 }).setHttpClientConfigCallback(httpClientBuilder -> {
                     httpClientBuilder = httpAsyncClientBuilder;
                     return httpClientBuilder;
