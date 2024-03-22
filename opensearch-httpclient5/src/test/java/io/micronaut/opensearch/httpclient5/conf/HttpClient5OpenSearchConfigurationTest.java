@@ -11,7 +11,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Property(name = "micronaut.opensearch.httpclient5.default-headers[0]", value = "Foo:Bar")
 @Property(name = "micronaut.opensearch.httpclient5.http-hosts[0]", value = "http://127.0.0.1:9200")

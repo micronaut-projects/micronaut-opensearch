@@ -12,7 +12,9 @@ import org.opensearch.client.opensearch.cluster.HealthResponse;
 
 import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @MicronautTest(startApplication = false)
 class OpenSearchClientHealthIndicatorTest {

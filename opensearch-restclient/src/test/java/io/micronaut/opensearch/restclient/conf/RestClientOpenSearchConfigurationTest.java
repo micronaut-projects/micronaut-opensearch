@@ -4,7 +4,6 @@ import io.micronaut.context.ApplicationContext;
 import io.micronaut.context.BeanContext;
 import io.micronaut.context.annotation.Property;
 import io.micronaut.core.util.StringUtils;
-import io.micronaut.opensearch.restclient.conf.RestClientOpenSearchConfiguration;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 import org.apache.http.Header;
@@ -13,7 +12,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Property(name = "micronaut.opensearch.rest-client.default-headers[0]", value = "Foo:Bar")
 @Property(name = "micronaut.opensearch.rest-client.http-hosts[0]", value = "http://127.0.0.1:9200")

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.opensearch.client.opensearch.OpenSearchAsyncClient;
 import org.opensearch.client.opensearch.OpenSearchClient;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @MicronautTest(startApplication = false)
 class OpenSearchClientFactoryTest {
