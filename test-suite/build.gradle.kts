@@ -5,24 +5,24 @@ plugins {
 
 dependencies {
     annotationProcessor(mnValidation.micronaut.validation.processor)
+
     implementation(mnValidation.micronaut.validation)
-    implementation(projects.opensearchRestclient)
+    implementation(projects.micronautOpensearchRestclient)
     implementation(mn.micronaut.jackson.databind)
     implementation(mn.micronaut.management)
 
     runtimeOnly(mnLogging.logback.classic)
 
     testImplementation(mn.micronaut.http.client)
-
     testImplementation(libs.awaitility)
+
     testResourcesImplementation(projects.testSuiteOpensearchContainer)
 }
 
-mainClassName = "micronaut.example.Application"
 micronaut {
-    version libs.versions.micronaut.platform.get()
-    runtime "netty"
-    testRuntime "junit5"
+    version.set(libs.versions.micronaut.platform)
+    runtime("netty")
+    testRuntime("junit5")
     testResources {
         clientTimeout = 300
     }

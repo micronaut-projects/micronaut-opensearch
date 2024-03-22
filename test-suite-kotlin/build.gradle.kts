@@ -14,27 +14,23 @@ dependencies {
     kaptTest(mn.micronaut.inject.java)
     kaptTest(mnValidation.micronaut.validation.processor)
 
-    testImplementation(projects.opensearchRestclient)
+    testImplementation(libs.awaitility)
+    testImplementation(libs.kotlin.reflect)
+    testImplementation(libs.kotlin.stdlib.jdk8)
 
+    testImplementation(mn.micronaut.http.client)
+    testImplementation(mn.micronaut.http.server.netty)
     testImplementation(mn.micronaut.jackson.databind)
     testImplementation(mn.micronaut.management)
 
     testImplementation(mnKotlin.micronaut.kotlin.runtime)
-    testImplementation(libs.kotlin.stdlib.jdk8)
-    testImplementation(libs.kotlin.reflect)
-
+    testImplementation(mnTest.micronaut.test.junit5)
     testImplementation(mnValidation.micronaut.validation)
 
-    testRuntimeOnly(mnLogging.logback.classic)
-
-    kaptTest(mn.micronaut.inject.java)
-
     testImplementation(platform(mnTest.boms.junit))
-    testImplementation(mn.micronaut.http.client)
-    testImplementation(mn.micronaut.http.server.netty)
-    testImplementation(mnTest.micronaut.test.junit5)
-    testImplementation(libs.awaitility)
+    testImplementation(projects.micronautOpensearchRestclient)
 
+    testRuntimeOnly(mnLogging.logback.classic)
     testRuntimeOnly(libs.junit.jupiter.engine)
 
     testResourcesImplementation(projects.testSuiteOpensearchContainer)

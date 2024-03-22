@@ -5,21 +5,22 @@ plugins {
 
 dependencies {
     testAnnotationProcessor(mnSerde.micronaut.serde.processor)
-    testImplementation(mnSerde.micronaut.serde.jackson)
     testAnnotationProcessor(mnValidation.micronaut.validation.processor)
+
+    testImplementation(mnSerde.micronaut.serde.jackson)
     testImplementation(mnValidation.micronaut.validation)
-    testImplementation(projects.opensearchHttpclient5)
+    testImplementation(projects.micronautOpensearchHttpclient5)
     testImplementation(mn.micronaut.management)
     testImplementation(mn.micronaut.http.client)
     testImplementation(libs.awaitility)
+
     testResourcesImplementation(projects.testSuiteOpensearchContainer)
 }
 
-mainClassName = "micronaut.example.Application"
 micronaut {
-    version libs.versions.micronaut.platform.get()
-    runtime "netty"
-    testRuntime "junit5"
+    version.set(libs.versions.micronaut.platform)
+    runtime("netty")
+    testRuntime("junit5")
     testResources {
         clientTimeout = 300
     }
