@@ -1,0 +1,13 @@
+To use Micronaut OpenSearch and connect with RestClient-based transport add the following dependencies:
+
+dependency:micronaut-opensearch-restclient[groupId=io.micronaut.opensearch]
+
+dependency:micronaut-jackson-databind[groupId=io.micronaut]
+
+You can configure the connection with:
+
+include::{includedir}configurationProperties/io.micronaut.opensearch.restclient.conf.RestClientOpenSearchConfigurationProperties.adoc[]
+
+You can create https://docs.micronaut.io/latest/api/io/micronaut/context/event/BeanCreatedEventListener.html[BeanCreatedEventListener]s for a beans of
+type `org.apache.http.client.config.RequestConfig.Builder`, `org.apache.http.impl.nio.client.HttpAsyncClientBuilder`, and `org.opensearch.client.RestClientBuilder`
+to configure the connection according to your use case.

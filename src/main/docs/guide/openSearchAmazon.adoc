@@ -1,0 +1,18 @@
+To use Micronaut OpenSearch and connect to Amazon OpenSearch Service add the following dependency:
+
+dependency:micronaut-opensearch-amazon[groupId=io.micronaut.opensearch]
+
+You can configure the connection with:
+
+include::{includedir}configurationProperties/io.micronaut.opensearch.aws.AmazonOpenSearchConfigurationProperties.adoc[]
+
+Moreover, you can create a https://docs.micronaut.io/latest/api/io/micronaut/context/event/BeanCreatedEventListener.html[BeanCreatedEventListener]
+for a bean of type `org.opensearch.client.transport.aws.AwsSdk2TransportOptions.Builder`, to configure the connection according to your use case.
+
+[source, java]
+----
+include::opensearch-amazon/src/test/java/io/micronaut/opensearch/aws/AwsSdk2TransportOptionsBeanCreatedEventListener.java[tags=startclazz]
+include::opensearch-amazon/src/test/java/io/micronaut/opensearch/aws/AwsSdk2TransportOptionsBeanCreatedEventListener.java[tags=method]
+include::opensearch-amazon/src/test/java/io/micronaut/opensearch/aws/AwsSdk2TransportOptionsBeanCreatedEventListener.java[tags=endmethod]
+include::opensearch-amazon/src/test/java/io/micronaut/opensearch/aws/AwsSdk2TransportOptionsBeanCreatedEventListener.java[tags=endclazz]
+----

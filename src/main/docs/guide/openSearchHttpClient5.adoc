@@ -1,0 +1,10 @@
+To use Micronaut OpenSearch and connect using Apache HttpClient 5 transport, add the following dependencies:
+
+dependency:micronaut-opensearch-httpclient5[groupId=io.micronaut.opensearch]
+
+You can configure the connection with:
+
+include::{includedir}configurationProperties/io.micronaut.opensearch.httpclient5.conf.HttpClient5OpenSearchConfigurationProperties.adoc[]
+
+You can create a https://docs.micronaut.io/latest/api/io/micronaut/context/event/BeanCreatedEventListener.html[BeanCreatedEventListener] for a bean of type `org.opensearch.client.transport.httpclient5.ApacheHttpClient5TransportBuilder`
+to configure the connection according to your use case.

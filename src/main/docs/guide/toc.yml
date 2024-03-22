@@ -1,7 +1,8 @@
-introduction:
-  title: Introduction
+introduction: Introduction
+openSearchAmazon: OpenSearch Amazon
+openSearchHttpClient5: OpenSearch using Apache HttpClient 5 Transport
+openSearchRestClient: OpenSearch RestClient
+health: Health
 releaseHistory: Release History
-quickStart:
-  title: Quick Start
 repository: Repository
 

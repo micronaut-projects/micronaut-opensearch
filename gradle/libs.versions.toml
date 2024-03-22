@@ -16,35 +16,54 @@
 # a managed version (a version which alias starts with "managed-"
 
 [versions]
-micronaut = "4.3.7"
+micronaut = "4.3.11"
+micronaut-platform = "4.3.6"
 micronaut-docs = "2.0.0"
 micronaut-test = "4.2.1"
-groovy = "4.0.17"
-spock = "2.3-groovy-4.0"
+micronaut-serde = "2.8.2"
+micronaut-aws = "4.4.3"
+micronaut-kotlin = "4.2.0"
+micronaut-logging = "1.2.3"
+micronaut-test-resources="2.3.3"
+micronaut-validation="4.4.3"
+
+awaitility = "4.2.0"
+micronaut-gradle-plugin = "4.3.4"
+managed-opensearch-testcontainers = "2.0.1"
 
 # Managed versions appear in the BOM
-# managed-somelib = "1.0"
-# managed-somebom = "1.1"
+managed-opensearch-java = "2.9.1"
+managed-opensearch-rest-client = "2.12.0"
+managed-apache-httpcomponents-httpclient5 = "5.3.1"
 
+kotlin = "1.9.23"
 [libraries]
+managed-opensearch-java = { module = "org.opensearch.client:opensearch-java", version.ref = "managed-opensearch-java" }
+managed-opensearch-rest-client = { module = "org.opensearch.client:opensearch-rest-client", version.ref = "managed-opensearch-rest-client" }
+managed-apache-httpcomponents-httpclient5 = { module ="org.apache.httpcomponents.client5:httpclient5", version.ref = "managed-apache-httpcomponents-httpclient5" }
+managed-opensearch-testcontainers = { module = "org.opensearch:opensearch-testcontainers", version.ref = "managed-opensearch-testcontainers" }
+
 # Core
 micronaut-core = { module = 'io.micronaut:micronaut-core-bom', version.ref = 'micronaut' }
+micronaut-serde = { module = "io.micronaut.serde:micronaut-serde-bom", version.ref = "micronaut-serde" }
+micronaut-aws = { module = "io.micronaut.aws:micronaut-aws-bom", version.ref = "micronaut-aws" }
+micronaut-runtime-groovy = { module = "io.micronaut.groovy:micronaut-runtime-groovy" }
+micronaut-kotlin = { module = "io.micronaut.kotlin:micronaut-kotlin-bom", version.ref = "micronaut-kotlin" }
+micronaut-test-resources = { module = "io.micronaut.testresources:micronaut-test-resources-bom", version.ref = "micronaut-test-resources" }
+micronaut-validation = { module = "io.micronaut.validation:micronaut-validation-bom", version.ref = "micronaut-validation" }
+awssdk-apache-client = { module = 'software.amazon.awssdk:apache-client' }
+awssdk-regions = { module = 'software.amazon.awssdk:regions' }
+awssdk-auth = { module = 'software.amazon.awssdk:auth' }
 
-#
-# Managed dependencies appear in the BOM
-#
-# managed-somelib = { module = "group:artifact", version.ref = "managed-somelib" }
-
-#
-# Imported BOMs, also appearing in the generated BOM
-#
-# boms-somebom = { module = "com.foo:somebom", version.ref = "managed-somebom" }
-
-# Other libraries used by the project but non managed
-
-# micronaut-bom = { module = "io.micronaut:micronaut-bom", version.ref = "micronaut" }
-# jdoctor = { module = "me.champeau.jdoctor:jdoctor-core", version.ref="jdoctor" }
-
+awaitility = { module = "org.awaitility:awaitility", version.ref = "awaitility" }
+gradle-micronaut = { module = "io.micronaut.gradle:micronaut-gradle-plugin", version.ref = "micronaut-gradle-plugin" }
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine" }
 [bundles]
 
 [plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-allopen = { id = "org.jetbrains.kotlin.plugin.allopen", version.ref = "kotlin" }
