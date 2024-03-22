@@ -15,7 +15,6 @@
  */
 package io.micronaut.opensearch;
 
-import io.micronaut.context.annotation.Bean;
 import io.micronaut.context.annotation.Factory;
 import io.micronaut.context.annotation.Prototype;
 import io.micronaut.context.annotation.Requires;
