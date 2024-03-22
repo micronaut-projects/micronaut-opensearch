@@ -18,7 +18,7 @@ public class OpenSearchTestResourceProvider extends AbstractTestContainersProvid
     public static final String SIMPLE_NAME = "opensearch";
     public static final String DEFAULT_IMAGE = "opensearchproject/opensearch";
     public static final String DISPLAY_NAME = "OpenSearch";
-    
+
     @Override
     public List<String> getResolvableProperties(Map<String, Collection<String>> propertyEntries, Map<String, Object> testResourcesConfig) {
         return Collections.singletonList(OPENSEARCH_HOSTS);
@@ -40,15 +40,15 @@ public class OpenSearchTestResourceProvider extends AbstractTestContainersProvid
     }
 
     @Override
+    @SuppressWarnings("resource") // The container is long-lived and closed elsewhere
     protected OpensearchContainer<?> createContainer(DockerImageName imageName, Map<String, Object> requestedProperties, Map<String, Object> testResourcesConfig) {
-    	OpensearchContainer<?> opensearchContainer = new OpensearchContainer<>(imageName)
-    		.withAccessToHost(true); // Necessary for host address and startup checks.
-        return opensearchContainer;
+        return new OpensearchContainer<>(imageName)
+            .withAccessToHost(true);
     }
 
     @Override
     protected Optional<String> resolveProperty(String propertyName, OpensearchContainer container) {
-        if (OPENSEARCH_HOSTS.equals(propertyName)) {        	
+        if (OPENSEARCH_HOSTS.equals(propertyName)) {
             return Optional.of(container.getHttpHostAddress());
         }
         return Optional.empty();
