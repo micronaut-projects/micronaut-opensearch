@@ -49,7 +49,169 @@
                 <p><strong>Version:</strong>1.0.0-SNAPSHOT</p>
                 <p></p>
             </div>
-
+<div class="sect2">
+<h3 id="_micronaut_opensearch_amazon_config_properties">Micronaut Opensearch Amazon Config Properties</h3>
+<a id="io.micronaut.opensearch.aws.AmazonOpenSearchConfigurationProperties" href="#io.micronaut.opensearch.aws.AmazonOpenSearchConfigurationProperties">&#128279;</a>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Configuration Properties for <a href="../api/io/micronaut/opensearch/aws/AmazonOpenSearchConfigurationProperties.html">AmazonOpenSearchConfigurationProperties</a></caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.aws.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether Amazon OpenSearch Service integration is enabled. Default value true</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.aws.endpoint</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the OpenSearch endpoint, without https:// For example: <code>search-&#8230;&#8203;us-east-1.aoss.amazonaws.com</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.aws.signing-region</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">software.amazon.awssdk.regions.Region</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The region to use for signing requests. For example: <code>us-east-1</code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+<div class="sect2">
+<h3 id="_micronaut_opensearch_config_properties">Micronaut Opensearch Config Properties</h3>
+<a id="io.micronaut.opensearch.health.OpenSearchHealthIndicatorConfigurationProperties" href="#io.micronaut.opensearch.health.OpenSearchHealthIndicatorConfigurationProperties">&#128279;</a>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Configuration Properties for <a href="../api/io/micronaut/opensearch/health/OpenSearchHealthIndicatorConfigurationProperties.html">OpenSearchHealthIndicatorConfigurationProperties</a></caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>endpoints.health.opensearch.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether OpenSearch Health Indicator is enabled. Default value true</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+<a id="io.micronaut.opensearch.conf.OpenSearchConfigurationProperties" href="#io.micronaut.opensearch.conf.OpenSearchConfigurationProperties">&#128279;</a>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Configuration Properties for <a href="../api/io/micronaut/opensearch/conf/OpenSearchConfigurationProperties.html">OpenSearchConfigurationProperties</a></caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If OpenSearch integration is enabled. Default value true</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+<div class="sect2">
+<h3 id="_micronaut_opensearch_httpclient5_config_properties">Micronaut Opensearch Httpclient5 Config Properties</h3>
+<a id="io.micronaut.opensearch.httpclient5.conf.HttpClient5OpenSearchConfigurationProperties" href="#io.micronaut.opensearch.httpclient5.conf.HttpClient5OpenSearchConfigurationProperties">&#128279;</a>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Configuration Properties for <a href="../api/io/micronaut/opensearch/httpclient5/conf/HttpClient5OpenSearchConfigurationProperties.html">HttpClient5OpenSearchConfigurationProperties</a></caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.httpclient5.http-hosts</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.apache.hc.core5.http.HttpHost</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One or more hosts that client will connect to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.httpclient5.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If OpenSearch integration is enabled. Default value true</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+<div class="sect2">
+<h3 id="_micronaut_opensearch_restclient_config_properties">Micronaut Opensearch Restclient Config Properties</h3>
+<a id="io.micronaut.opensearch.restclient.conf.RestClientOpenSearchConfigurationProperties" href="#io.micronaut.opensearch.restclient.conf.RestClientOpenSearchConfigurationProperties">&#128279;</a>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Configuration Properties for <a href="../api/io/micronaut/opensearch/restclient/conf/RestClientOpenSearchConfigurationProperties.html">RestClientOpenSearchConfigurationProperties</a></caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.rest-client.http-hosts</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.apache.http.HttpHost</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">One or more hosts that client will connect to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.rest-client.node-selector</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.opensearch.client.NodeSelector</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The {@link NodeSelector} to be used, in case of multiple
+                     nodes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.rest-client.default-headers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.apache.http.Header</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The defaults {@link Header} to sent with each request.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.rest-client.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If OpenSearch integration is enabled. Default value true</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
         </div>
     </div>
 </body>
