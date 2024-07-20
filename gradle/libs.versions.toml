@@ -36,7 +36,7 @@ managed-opensearch-java = "2.10.3"
 managed-opensearch-rest-client = "2.14.0"
 managed-apache-httpcomponents-httpclient5 = "5.3.1"
 
-kotlin = "1.9.24"
+kotlin = "1.9.25"
 [libraries]
 managed-opensearch-java = { module = "org.opensearch.client:opensearch-java", version.ref = "managed-opensearch-java" }
 managed-opensearch-rest-client = { module = "org.opensearch.client:opensearch-rest-client", version.ref = "managed-opensearch-rest-client" }
