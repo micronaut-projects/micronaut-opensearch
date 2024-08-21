@@ -1,0 +1,7 @@
+io.micronaut.opensearch.aws
+io.micronaut.opensearch.conf
+io.micronaut.opensearch.health
+io.micronaut.opensearch.httpclient5.conf
+io.micronaut.opensearch.httpclient5.converters
+io.micronaut.opensearch.restclient.conf
+io.micronaut.opensearch.restclient.converter
