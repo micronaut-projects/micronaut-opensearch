@@ -34,7 +34,7 @@ sonatype-scan = "3.0.0"
 
 # Managed versions appear in the BOM
 managed-opensearch-java = "2.21.0"
-managed-opensearch-rest-client = "2.19.0"
+managed-opensearch-rest-client = "2.19.1"
 managed-apache-httpcomponents-httpclient5 = "5.4.2"
 
 kotlin = "1.9.25"
