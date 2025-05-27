@@ -8,12 +8,10 @@ import org.awaitility.Awaitility.await
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.condition.DisabledInNativeImage
 
 @MicronautTest
 class OpenSearchTest {
 
-    @DisabledInNativeImage
     @Test
     fun testOpenSearch(movieService: MovieService) {
         val imdb = "KJFDOD"
