@@ -3,7 +3,7 @@ package io.micronaut.opensearch.restclient;
 import io.micronaut.context.BeanContext;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
-import org.apache.http.impl.nio.client.HttpAsyncClientBuilder;
+import org.apache.hc.client5.http.impl.async.HttpAsyncClientBuilder;
 import org.junit.jupiter.api.Test;
 import org.opensearch.client.RestClient;
 import org.opensearch.client.transport.OpenSearchTransport;

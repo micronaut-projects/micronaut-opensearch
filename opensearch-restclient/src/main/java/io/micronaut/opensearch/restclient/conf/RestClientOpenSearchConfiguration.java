@@ -16,8 +16,8 @@
 package io.micronaut.opensearch.restclient.conf;
 
 import io.micronaut.core.util.Toggleable;
-import org.apache.http.Header;
-import org.apache.http.HttpHost;
+import org.apache.hc.core5.http.Header;
+import org.apache.hc.core5.http.HttpHost;
 import org.opensearch.client.NodeSelector;
 
 /**

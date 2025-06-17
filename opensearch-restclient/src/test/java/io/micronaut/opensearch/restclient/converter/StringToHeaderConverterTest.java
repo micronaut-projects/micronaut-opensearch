@@ -1,6 +1,6 @@
 package io.micronaut.opensearch.restclient.converter;
 
-import org.apache.http.Header;
+import org.apache.hc.core5.http.Header;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;

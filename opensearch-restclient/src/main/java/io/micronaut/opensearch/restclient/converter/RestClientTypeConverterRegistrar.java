@@ -17,9 +17,9 @@ package io.micronaut.opensearch.restclient.converter;
 
 import io.micronaut.core.annotation.Internal;
 import io.micronaut.core.convert.MutableConversionService;
-import org.apache.http.Header;
-import org.apache.http.HttpHost;
 import io.micronaut.core.convert.TypeConverterRegistrar;
+import org.apache.hc.core5.http.Header;
+import org.apache.hc.core5.http.HttpHost;
 import org.opensearch.client.NodeSelector;
 
 
