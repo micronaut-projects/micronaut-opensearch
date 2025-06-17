@@ -57,7 +57,7 @@ class OpenSearchClientHealthIndicatorTest {
                 .clusterName("docker-cluster")
                 .status(up ? org.opensearch.client.opensearch._types.HealthStatus.Green : org.opensearch.client.opensearch._types.HealthStatus.Red)
                 .timedOut(false)
-                .activeShardsPercentAsNumber("100")
+                .activeShardsPercentAsNumber(100)
                 .relocatingShards(0)
                 .activePrimaryShards(2)
                 .activeShards(2)
@@ -65,7 +65,7 @@ class OpenSearchClientHealthIndicatorTest {
                 .numberOfDataNodes(1)
                 .numberOfPendingTasks(0)
                 .numberOfInFlightFetch(0)
-                .taskMaxWaitingInQueueMillis("0")
+                .taskMaxWaitingInQueueMillis(0)
                 .build();
     }
 }
