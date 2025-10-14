@@ -49,7 +49,7 @@ class MovieServiceImpl(
                 "Searching for '{}' took {} and found {}",
                 title,
                 searchResponse.took(),
-                searchResponse.hits().total().value()
+                searchResponse.hits().total()?.value()
             )
 
             val hits: Iterator<Hit<Movie>> = searchResponse.hits().hits().iterator()

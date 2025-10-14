@@ -18,7 +18,7 @@ package io.micronaut.opensearch.restclient.converter;
 import io.micronaut.core.annotation.Internal;
 import io.micronaut.core.convert.ConversionContext;
 import io.micronaut.core.convert.TypeConverter;
-import org.apache.http.HttpHost;
+import org.apache.hc.core5.http.HttpHost;
 
 import java.net.URI;
 import java.util.Optional;
@@ -33,6 +33,6 @@ final class StringToHttpHostConverter implements TypeConverter<CharSequence, Htt
     public Optional<HttpHost> convert(CharSequence object, Class<HttpHost> targetType, ConversionContext context) {
         String uriString = object.toString();
         URI uri = URI.create(uriString);
-        return Optional.of(new HttpHost(uri.getHost(), uri.getPort(), uri.getScheme()));
+        return Optional.of(new HttpHost(uri.getScheme(), uri.getHost(), uri.getPort()));
     }
 }

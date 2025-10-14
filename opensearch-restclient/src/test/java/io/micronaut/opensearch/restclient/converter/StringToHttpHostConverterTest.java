@@ -1,6 +1,6 @@
 package io.micronaut.opensearch.restclient.converter;
 
-import org.apache.http.HttpHost;
+import org.apache.hc.core5.http.HttpHost;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;

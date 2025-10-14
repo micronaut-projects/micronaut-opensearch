@@ -18,13 +18,14 @@ package io.micronaut.opensearch.restclient.converter;
 import io.micronaut.core.annotation.Internal;
 import io.micronaut.core.convert.ConversionContext;
 import io.micronaut.core.convert.TypeConverter;
-import org.apache.http.Header;
-import org.apache.http.message.BasicHeader;
+import org.apache.hc.core5.http.Header;
+import org.apache.hc.core5.http.message.BasicHeader;
+
 
 import java.util.Optional;
 
 /**
- * Converter for CharSequence to Header. 
+ * Converter for CharSequence to Header.
  */
 @Internal
 final class StringToHeaderConverter implements TypeConverter<CharSequence, Header> {
