@@ -109,13 +109,13 @@
         <h1>Micronaut OpenSearch</h1>
         <p></p>
         <p>Micronaut integration with OpenSearch</p>
-        <p><strong>Version:</strong> 1.6.1-SNAPSHOT </p>
+        <p><strong>Version:</strong> 1.7.0-SNAPSHOT </p>
     </div>
     
 <h1 id="introduction"><a class="anchor" href="#introduction"></a>1 Introduction</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.6.x/src/main/docs/guide/introduction.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.7.x/src/main/docs/guide/introduction.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -374,7 +374,7 @@ class MovieServiceImpl(
 <h1 id="openSearchAmazon"><a class="anchor" href="#openSearchAmazon"></a>2 OpenSearch Amazon</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.6.x/src/main/docs/guide/openSearchAmazon.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.7.x/src/main/docs/guide/openSearchAmazon.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -406,15 +406,17 @@ class MovieServiceImpl(
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Configuration Properties for <a href="../api/io/micronaut/opensearch/aws/AmazonOpenSearchConfigurationProperties.html">AmazonOpenSearchConfigurationProperties</a></caption>
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Property</th>
 <th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default value</th>
 </tr>
 </thead>
 <tbody>
@@ -422,16 +424,19 @@ class MovieServiceImpl(
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.aws.enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Whether Amazon OpenSearch Service integration is enabled. Default value true</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.aws.endpoint</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sets the OpenSearch endpoint, without https:// For example: <code>search-&#8230;&#8203;us-east-1.aoss.amazonaws.com</code>.</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.aws.signing-region</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">software.amazon.awssdk.regions.Region</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The region to use for signing requests. For example: <code>us-east-1</code>.</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
@@ -461,7 +466,7 @@ class AwsSdk2TransportOptionsBeanCreatedEventListener implements BeanCreatedEven
 <h1 id="openSearchHttpClient5"><a class="anchor" href="#openSearchHttpClient5"></a>3 OpenSearch using Apache HttpClient 5 Transport</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.6.x/src/main/docs/guide/openSearchHttpClient5.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.7.x/src/main/docs/guide/openSearchHttpClient5.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -493,15 +498,17 @@ class AwsSdk2TransportOptionsBeanCreatedEventListener implements BeanCreatedEven
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Configuration Properties for <a href="../api/io/micronaut/opensearch/httpclient5/conf/HttpClient5OpenSearchConfigurationProperties.html">HttpClient5OpenSearchConfigurationProperties</a></caption>
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Property</th>
 <th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default value</th>
 </tr>
 </thead>
 <tbody>
@@ -509,11 +516,13 @@ class AwsSdk2TransportOptionsBeanCreatedEventListener implements BeanCreatedEven
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.httpclient5.http-hosts</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">org.apache.hc.core5.http.HttpHost</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">One or more hosts that client will connect to.</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.httpclient5.enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If OpenSearch integration is enabled. Default value true</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
@@ -525,7 +534,7 @@ to configure the connection according to your use case.</p>
 <h1 id="openSearchRestClient"><a class="anchor" href="#openSearchRestClient"></a>4 OpenSearch RestClient</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.6.x/src/main/docs/guide/openSearchRestClient.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.7.x/src/main/docs/guide/openSearchRestClient.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -573,15 +582,17 @@ to configure the connection according to your use case.</p>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Configuration Properties for <a href="../api/io/micronaut/opensearch/restclient/conf/RestClientOpenSearchConfigurationProperties.html">RestClientOpenSearchConfigurationProperties</a></caption>
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Property</th>
 <th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default value</th>
 </tr>
 </thead>
 <tbody>
@@ -589,22 +600,26 @@ to configure the connection according to your use case.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.rest-client.http-hosts</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">org.apache.http.HttpHost</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">One or more hosts that client will connect to.</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.rest-client.node-selector</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">org.opensearch.client.NodeSelector</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The {@link NodeSelector} to be used, in case of multiple
                      nodes.</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.rest-client.default-headers</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">org.apache.http.Header</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The defaults {@link Header} to sent with each request.</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.rest-client.enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If OpenSearch integration is enabled. Default value true</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
@@ -617,7 +632,7 @@ to configure the connection according to your use case.</p>
 <h1 id="health"><a class="anchor" href="#health"></a>5 Health</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.6.x/src/main/docs/guide/health.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.7.x/src/main/docs/guide/health.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -633,15 +648,17 @@ to configure the connection according to your use case.</p>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Configuration Properties for <a href="../api/io/micronaut/opensearch/health/OpenSearchHealthIndicatorConfigurationProperties.html">OpenSearchHealthIndicatorConfigurationProperties</a></caption>
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Property</th>
 <th class="tableblock halign-left valign-top">Type</th>
 <th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default value</th>
 </tr>
 </thead>
 <tbody>
@@ -649,6 +666,7 @@ to configure the connection according to your use case.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>endpoints.health.opensearch.enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Whether OpenSearch Health Indicator is enabled. Default value true</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
@@ -656,7 +674,7 @@ to configure the connection according to your use case.</p>
 <h1 id="releaseHistory"><a class="anchor" href="#releaseHistory"></a>6 Release History</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.6.x/src/main/docs/guide/releaseHistory.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.7.x/src/main/docs/guide/releaseHistory.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -672,7 +690,7 @@ to configure the connection according to your use case.</p>
 <h1 id="repository"><a class="anchor" href="#repository"></a>7 Repository</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.6.x/src/main/docs/guide/repository.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.7.x/src/main/docs/guide/repository.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
