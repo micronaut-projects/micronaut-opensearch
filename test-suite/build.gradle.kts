@@ -17,6 +17,7 @@ dependencies {
     testImplementation(libs.awaitility)
 
     testResourcesImplementation(projects.testSuiteOpensearchContainer)
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 micronaut {
