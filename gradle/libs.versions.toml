@@ -59,8 +59,6 @@ awaitility = { module = "org.awaitility:awaitility", version.ref = "awaitility" 
 gradle-micronaut = { module = "io.micronaut.gradle:micronaut-gradle-plugin", version.ref = "micronaut-gradle-plugin" }
 kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
-junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api" }
-junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine" }
 [bundles]
 
 [plugins]

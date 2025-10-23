@@ -31,7 +31,7 @@ dependencies {
     testImplementation(projects.micronautOpensearchRestclient)
 
     testRuntimeOnly(mnLogging.logback.classic)
-    testRuntimeOnly(libs.junit.jupiter.engine)
+    testRuntimeOnly(mnTest.junit.jupiter.engine)
 
     testResourcesImplementation(projects.testSuiteOpensearchContainer)
 }
