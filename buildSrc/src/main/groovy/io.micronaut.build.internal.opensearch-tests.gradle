@@ -1,0 +1,10 @@
+plugins {
+    id("io.micronaut.build.internal.opensearch-base")
+    id "java-library"
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    testRuntimeOnly(mnTest.junit.platform.suite)
+}

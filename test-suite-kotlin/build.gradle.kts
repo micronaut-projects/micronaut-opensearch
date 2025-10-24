@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.kotlin.allopen)
     id("io.micronaut.test-resources")
     id("io.micronaut.graalvm")
+    id("io.micronaut.build.internal.opensearch-tests")
 }
 
 repositories {

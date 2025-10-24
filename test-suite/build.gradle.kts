@@ -1,6 +1,7 @@
 plugins {
     id("io.micronaut.application")
     id("io.micronaut.test-resources")
+    id("io.micronaut.build.internal.opensearch-tests")
 }
 
 dependencies {
@@ -17,7 +18,6 @@ dependencies {
     testImplementation(libs.awaitility)
 
     testResourcesImplementation(projects.testSuiteOpensearchContainer)
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 micronaut {
