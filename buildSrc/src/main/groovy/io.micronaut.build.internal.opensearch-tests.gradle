@@ -7,5 +7,6 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    testRuntimeOnly(mnTest.junit.platform.suite)
+    testRuntimeOnly(mnTest.junit.platform.launcher)
+    testRuntimeOnly(mnTest.junit.jupiter.engine)
 }
