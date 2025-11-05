@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.kapt)
@@ -7,6 +5,7 @@ plugins {
     id("io.micronaut.test-resources")
     id("io.micronaut.graalvm")
     id("io.micronaut.build.internal.opensearch-tests")
+    id ("io.micronaut.build.internal.kotlin-base")
 }
 
 repositories {
