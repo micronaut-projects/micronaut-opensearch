@@ -33,6 +33,8 @@ dependencies {
 
     testRuntimeOnly(mnLogging.logback.classic)
     testRuntimeOnly(mnTest.junit.jupiter.engine)
+    testRuntimeOnly(mnTest.junit.platform.launcher)
+    testRuntimeOnly(mnTest.junit.jupiter.engine)
 
     testResourcesImplementation(projects.testSuiteOpensearchContainer)
 }

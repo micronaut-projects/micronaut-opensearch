@@ -15,6 +15,9 @@ dependencies {
 
     testImplementation(mn.micronaut.http.client)
     testImplementation(libs.awaitility)
+    testRuntimeOnly(mnTest.junit.platform.suite)
+    testRuntimeOnly(mnTest.junit.platform.launcher)
+    testRuntimeOnly(mnTest.junit.jupiter.engine)
 
     testResourcesImplementation(projects.testSuiteOpensearchContainer)
 }
