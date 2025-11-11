@@ -2,7 +2,6 @@ plugins {
     id("groovy")
     id("io.micronaut.minimal.application")
     id("io.micronaut.test-resources")
-    id("io.micronaut.build.internal.opensearch-tests")
 }
 
 dependencies {
