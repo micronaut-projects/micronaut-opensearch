@@ -1,6 +1,6 @@
 package io.micronaut.opensearch.testresources;
 
-import io.micronaut.core.annotation.NonNull;
+import org.jspecify.annotations.NonNull;
 import io.micronaut.testresources.testcontainers.AbstractTestContainersProvider;
 import org.opensearch.testcontainers.OpensearchContainer;
 import org.testcontainers.utility.DockerImageName;
