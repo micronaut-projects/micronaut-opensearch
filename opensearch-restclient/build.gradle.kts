@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    compileOnly(mn.micronaut.jackson.databind)
+    compileOnly("com.fasterxml.jackson.core:jackson-databind:2.20.1")
 
     api(projects.micronautOpensearch)
     api(libs.managed.opensearch.rest.client) {

@@ -49,7 +49,7 @@ final class RestClientFactory {
     @Requires(beans = { ObjectMapper.class, RestClient.class })
     @Bean(preDestroy = "close")
     @Prototype
-    OpenSearchTransport openSearchTransport(RestClient restClient, ObjectMapper objectMapper) {
+    OpenSearchTransport openSearchTransport(RestClient restClient, ObjectMapper objectMapper) { // ObjectMapper require jackson 2
         return new RestClientTransport(restClient, new JacksonJsonpMapper(objectMapper));
     }
 
