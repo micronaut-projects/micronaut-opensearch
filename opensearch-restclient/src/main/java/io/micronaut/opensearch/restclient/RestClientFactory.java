@@ -15,7 +15,6 @@
  */
 package io.micronaut.opensearch.restclient;
 
-import tools.jackson.databind.ObjectMapper;
 import io.micronaut.context.annotation.Bean;
 import io.micronaut.context.annotation.Factory;
 import io.micronaut.context.annotation.Prototype;
@@ -45,7 +44,7 @@ final class RestClientFactory {
      * @return The {@link OpenSearchTransport}.
      * @since 4.2.0
      */
-    @Requires(beans = { ObjectMapper.class, RestClient.class })
+    @Requires(beans = { RestClient.class })
     @Bean(preDestroy = "close")
     @Prototype
     OpenSearchTransport openSearchTransport(RestClient restClient) {
