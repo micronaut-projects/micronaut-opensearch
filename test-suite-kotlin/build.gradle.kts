@@ -1,7 +1,5 @@
 plugins {
-    alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.kotlin.allopen)
+    id("io.micronaut.build.internal.kotlin-kapt")
     id("io.micronaut.test-resources")
     id("io.micronaut.graalvm")
 }
@@ -15,15 +13,12 @@ dependencies {
     kaptTest(mnValidation.micronaut.validation.processor)
 
     testImplementation(libs.awaitility)
-    testImplementation(libs.kotlin.reflect)
-    testImplementation(libs.kotlin.stdlib.jdk8)
 
     testImplementation(mn.micronaut.http.client)
     testImplementation(mn.micronaut.http.server.netty)
     testImplementation(mn.micronaut.jackson.databind)
     testImplementation(mn.micronaut.management)
 
-    testImplementation(mnKotlin.micronaut.kotlin.runtime)
     testImplementation(mnTest.micronaut.test.junit5)
     testImplementation(mnValidation.micronaut.validation)
 
@@ -40,11 +35,6 @@ tasks.test {
     useJUnitPlatform()
 }
 
-kotlin {
-    jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
-    }
-}
 
 micronaut {
     version.set(libs.versions.micronaut.platform.get())
