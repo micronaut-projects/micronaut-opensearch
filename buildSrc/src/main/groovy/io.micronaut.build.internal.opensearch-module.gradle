@@ -10,3 +10,9 @@ dependencies {
     testImplementation(mnTest.micronaut.test.junit5)
     testRuntimeOnly(libs.junit.jupiter.engine)
 }
+
+ossIndexAudit {
+    excludeCoordinates = [
+            "org.bouncycastle:bc-fips:2.0.0"
+    ]
+}
