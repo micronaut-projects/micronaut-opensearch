@@ -15,7 +15,7 @@
  */
 package io.micronaut.opensearch.restclient;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 import io.micronaut.context.annotation.Bean;
 import io.micronaut.context.annotation.Factory;
 import io.micronaut.context.annotation.Prototype;
@@ -42,15 +42,14 @@ final class RestClientFactory {
 
     /**
      * @param restClient Rest Client.
-     * @param objectMapper Jackson's {@link ObjectMapper}
      * @return The {@link OpenSearchTransport}.
      * @since 4.2.0
      */
     @Requires(beans = { ObjectMapper.class, RestClient.class })
     @Bean(preDestroy = "close")
     @Prototype
-    OpenSearchTransport openSearchTransport(RestClient restClient, ObjectMapper objectMapper) { // ObjectMapper require jackson 2
-        return new RestClientTransport(restClient, new JacksonJsonpMapper(objectMapper));
+    OpenSearchTransport openSearchTransport(RestClient restClient) {
+        return new RestClientTransport(restClient, new JacksonJsonpMapper());
     }
 
     /**

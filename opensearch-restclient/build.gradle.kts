@@ -3,8 +3,7 @@ plugins {
 }
 
 dependencies {
-    compileOnly("com.fasterxml.jackson.core:jackson-databind:2.20.1")
-
+    compileOnly(mn.micronaut.jackson.databind)
     api(projects.micronautOpensearch)
     api(libs.managed.opensearch.rest.client) {
         exclude(group="commons-logging", module = "commons-logging")
