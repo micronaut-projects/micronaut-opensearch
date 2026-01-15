@@ -32,7 +32,7 @@ micronaut-gradle-plugin = "4.6.1"
 managed-opensearch-testcontainers = "2.1.4"
 
 # Managed versions appear in the BOM
-managed-opensearch-java = "3.0.0"
+managed-opensearch-java = "3.5.0"
 managed-opensearch-rest-client = "3.0.0"
 managed-apache-httpcomponents-httpclient5 = "5.5.1"
 
