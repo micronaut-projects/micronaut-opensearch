@@ -30,6 +30,5 @@ configure<io.micronaut.build.MicronautBuildSettingsExtension> {
     importMicronautCatalog("micronaut-aws")
     importMicronautCatalog("micronaut-kotlin")
     importMicronautCatalog("micronaut-serde")
-    importMicronautCatalog("micronaut-test-resources")
     importMicronautCatalog("micronaut-validation")
 }

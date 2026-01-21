@@ -1,7 +1,6 @@
 plugins {
     id("groovy")
     id("io.micronaut.minimal.application")
-    id("io.micronaut.test-resources")
 }
 
 dependencies {
@@ -28,8 +27,5 @@ micronaut {
     version.set(libs.versions.micronaut.platform)
     runtime("netty")
     testRuntime("spock")
-    testResources {
-        clientTimeout = 300
-    }
 }
 

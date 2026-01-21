@@ -1,6 +1,5 @@
 plugins {
     id("io.micronaut.build.internal.kotlin-kapt")
-    id("io.micronaut.test-resources")
     id("io.micronaut.graalvm")
 }
 
@@ -36,9 +35,6 @@ tasks.test {
 }
 
 
-micronaut {
-    version.set(libs.versions.micronaut.platform.get())
-    testResources {
-        clientTimeout = 300
-    }
-}
+//micronaut {
+//    version.set(libs.versions.micronaut.platform.get())
+//}
