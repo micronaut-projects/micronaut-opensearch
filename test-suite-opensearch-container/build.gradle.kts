@@ -4,8 +4,9 @@ plugins {
 }
 
 dependencies {
-    api(libs.managed.opensearch.testcontainers)
-    implementation(mnTestResources.micronaut.test.resources.server)
+    implementation(platform(mnTest.boms.testcontainers))
+    implementation(libs.testcontainers)
+    implementation(libs.managed.opensearch.testcontainers)
     implementation(mn.micronaut.core.processor)
 }
 

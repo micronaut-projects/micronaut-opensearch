@@ -23,11 +23,12 @@ dependencies {
 
     testImplementation(platform(mnTest.boms.junit))
     testImplementation(projects.micronautOpensearchRestclient)
+    testImplementation(mnTest.junit.platform.launcher)
 
     testRuntimeOnly(mnLogging.logback.classic)
     testRuntimeOnly(libs.junit.jupiter.engine)
 
-    testResourcesImplementation(projects.testSuiteOpensearchContainer)
+    testImplementation(projects.testSuiteOpensearchContainer)
 }
 
 tasks.test {

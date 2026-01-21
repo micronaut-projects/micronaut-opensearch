@@ -13,7 +13,7 @@ dependencies {
     testImplementation(mn.micronaut.http.client)
     testImplementation(libs.awaitility)
 
-    testResourcesImplementation(projects.testSuiteOpensearchContainer)
+    testImplementation(projects.testSuiteOpensearchContainer)
 }
 
 micronaut {

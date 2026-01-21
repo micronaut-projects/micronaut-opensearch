@@ -20,7 +20,7 @@ dependencies {
     testRuntimeOnly(mnLogging.logback.classic)
     testRuntimeOnly(mnLogging.slf4j.jcl.over.slf4j)
 
-    testResourcesImplementation(projects.testSuiteOpensearchContainer)
+    testImplementation(projects.testSuiteOpensearchContainer)
 }
 
 micronaut {

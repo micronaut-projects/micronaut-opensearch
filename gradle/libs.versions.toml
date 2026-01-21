@@ -38,7 +38,7 @@ managed-opensearch-java = { module = "org.opensearch.client:opensearch-java", ve
 managed-opensearch-rest-client = { module = "org.opensearch.client:opensearch-rest-client", version.ref = "managed-opensearch-rest-client" }
 managed-apache-httpcomponents-httpclient5 = { module ="org.apache.httpcomponents.client5:httpclient5", version.ref = "managed-apache-httpcomponents-httpclient5" }
 managed-opensearch-testcontainers = { module = "org.opensearch:opensearch-testcontainers", version.ref = "managed-opensearch-testcontainers" }
-
+testcontainers = { module = "org.testcontainers:testcontainers" }
 # Core
 micronaut-core = { module = 'io.micronaut:micronaut-core-bom', version.ref = 'micronaut' }
 micronaut-serde = { module = "io.micronaut.serde:micronaut-serde-bom", version.ref = "micronaut-serde" }
