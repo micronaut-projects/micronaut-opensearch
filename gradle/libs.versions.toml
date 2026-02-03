@@ -24,7 +24,7 @@ micronaut-kotlin = "4.7.0"
 micronaut-validation="5.0.0-M1"
 
 awaitility = "4.3.0"
-micronaut-gradle-plugin = "4.6.1"
+micronaut-gradle-plugin = "4.6.2"
 managed-opensearch-testcontainers = "2.1.4"
 
 # Managed versions appear in the BOM
