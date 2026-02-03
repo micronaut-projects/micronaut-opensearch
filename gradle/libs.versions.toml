@@ -22,7 +22,6 @@ micronaut-serde = "3.0.0-M2"
 micronaut-aws = "4.11.0"
 micronaut-kotlin = "4.7.0"
 micronaut-validation="5.0.0-M1"
-micronaut-test = "5.0.0-M3"
 
 awaitility = "4.3.0"
 micronaut-gradle-plugin = "4.6.1"
