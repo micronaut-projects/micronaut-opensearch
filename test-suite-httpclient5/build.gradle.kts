@@ -1,6 +1,5 @@
 plugins {
     id("io.micronaut.application")
-    id("io.micronaut.test-resources")
 }
 
 dependencies {
@@ -14,15 +13,12 @@ dependencies {
     testImplementation(mn.micronaut.http.client)
     testImplementation(libs.awaitility)
 
-    testResourcesImplementation(projects.testSuiteOpensearchContainer)
+    testImplementation(projects.testSuiteOpensearchContainer)
 }
 
 micronaut {
     version.set(libs.versions.micronaut.platform)
     runtime("netty")
     testRuntime("junit5")
-    testResources {
-        clientTimeout = 300
-    }
 }
 

@@ -4,7 +4,6 @@ plugins {
 
 dependencies {
     compileOnly(mn.micronaut.jackson.databind)
-
     api(projects.micronautOpensearch)
     api(libs.managed.opensearch.rest.client) {
         exclude(group="commons-logging", module = "commons-logging")

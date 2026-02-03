@@ -1,6 +1,8 @@
 package micronaut.example
 
+import io.micronaut.opensearch.testresources.OpenSearch
 import io.micronaut.test.extensions.spock.annotation.MicronautTest
+import io.micronaut.test.support.TestPropertyProvider
 import jakarta.inject.Inject
 import micronaut.example.service.Movie
 import micronaut.example.service.MovieService
@@ -8,7 +10,13 @@ import spock.lang.Specification
 import spock.util.concurrent.PollingConditions
 
 @MicronautTest
-class OpenSearchSpec extends Specification {
+class OpenSearchSpec extends Specification implements TestPropertyProvider {
+
+    @Override
+    Map<String, String> getProperties() {
+        return OpenSearch.properties
+    }
+
     @Inject
     MovieService movieService
 

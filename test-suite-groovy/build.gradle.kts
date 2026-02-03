@@ -1,7 +1,6 @@
 plugins {
     id("groovy")
     id("io.micronaut.minimal.application")
-    id("io.micronaut.test-resources")
 }
 
 dependencies {
@@ -21,15 +20,12 @@ dependencies {
     testRuntimeOnly(mnLogging.logback.classic)
     testRuntimeOnly(mnLogging.slf4j.jcl.over.slf4j)
 
-    testResourcesImplementation(projects.testSuiteOpensearchContainer)
+    testImplementation(projects.testSuiteOpensearchContainer)
 }
 
 micronaut {
     version.set(libs.versions.micronaut.platform)
     runtime("netty")
     testRuntime("spock")
-    testResources {
-        clientTimeout = 300
-    }
 }
 

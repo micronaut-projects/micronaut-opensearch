@@ -6,7 +6,7 @@ pluginManagement {
 }
 
 plugins {
-    id("io.micronaut.build.shared.settings") version "8.0.0-M12"
+    id("io.micronaut.build.shared.settings") version "8.0.0-M15"
 }
 
 rootProject.name = "opensearch-parent"
@@ -30,6 +30,5 @@ configure<io.micronaut.build.MicronautBuildSettingsExtension> {
     importMicronautCatalog("micronaut-aws")
     importMicronautCatalog("micronaut-kotlin")
     importMicronautCatalog("micronaut-serde")
-    importMicronautCatalog("micronaut-test-resources")
     importMicronautCatalog("micronaut-validation")
 }

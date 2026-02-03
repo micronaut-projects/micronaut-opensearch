@@ -1,0 +1,25 @@
+[{
+  "name": "micronaut.example.service.Movie",
+  "allDeclaredConstructors": true,
+  "allDeclaredFields": true,
+  "allPublicMethods": true
+},
+  {
+    "name": "com.fasterxml.jackson.annotation.JsonCreator",
+    "queryAllPublicMethods": false,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "com.fasterxml.jackson.annotation.JsonProperty",
+    "queryAllPublicMethods": false,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.apache.hc.client5.http.impl.auth.BasicScheme",
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.apache.hc.client5.http.auth.BasicUserPrincipal",
+    "allDeclaredConstructors": true
+  }
+]
