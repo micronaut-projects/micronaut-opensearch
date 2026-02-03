@@ -15,7 +15,7 @@
     <script>hljs.initHighlightingOnLoad();</script>
     <link rel="stylesheet" href="../css/multi-language-sample.css"/>
     <script src="../js/docs.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.13/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
     <script type="text/javascript">
         function addJsClass(el) {
             var classes = document.body.className.split(" ");
@@ -23,7 +23,9 @@
             document.body.className = classes.join(" ");
         }
     </script>
-
+    <style type="text/css">
+        .lang-java { display: block }; .lang-python { display: block }; .lang-kotlin { display: block }; .lang-groovy { display: block }; 
+    </style>
 </head>
 
 <body class="body" id="docs" onload="addJsClass();" onhashchange="highlightMenu()">
@@ -109,13 +111,13 @@
         <h1>Micronaut OpenSearch</h1>
         <p></p>
         <p>Micronaut integration with OpenSearch</p>
-        <p><strong>Version:</strong> 1.7.0-SNAPSHOT </p>
+        <p><strong>Version:</strong> 2.0.0-SNAPSHOT </p>
     </div>
     
 <h1 id="introduction"><a class="anchor" href="#introduction"></a>1 Introduction</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.7.x/src/main/docs/guide/introduction.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/2.0.x/src/main/docs/guide/introduction.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -216,6 +218,80 @@ class MovieServiceImpl implements MovieService {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">package micronaut.example.service
+
+import jakarta.inject.Singleton
+import micronaut.example.configuration.AppConfiguration
+import micronaut.example.exception.MovieServiceException
+import org.opensearch.client.opensearch.OpenSearchClient
+import org.opensearch.client.opensearch.core.IndexRequest
+import org.opensearch.client.opensearch.core.IndexResponse
+import org.opensearch.client.opensearch.core.SearchResponse
+import org.opensearch.client.opensearch.core.search.Hit
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+
+@Singleton
+class MovieServiceImpl(
+    private val appConfiguration: AppConfiguration,
+    private val client: OpenSearchClient
+) : MovieService {
+
+    override fun saveMovie(movie: Movie): String {
+        try {
+            val indexRequest: IndexRequest&lt;Movie&gt; = createIndexRequest(movie)
+            val indexResponse: IndexResponse = client.index(indexRequest)
+            val id: String = indexResponse.id()
+            LOG.info("Document for '{}' {} successfully in ES. The id is: {}", movie, indexResponse.result(), id)
+            return id
+        } catch (e: Exception) {
+            val errorMessage = String.format("An exception occurred while indexing '%s'", movie)
+            LOG.error(errorMessage)
+            throw MovieServiceException(errorMessage, e)
+        }
+    }
+
+    private fun createIndexRequest(movie: Movie): IndexRequest&lt;Movie&gt; {
+        return IndexRequest.Builder&lt;Movie&gt;()
+            .index(appConfiguration.getMoviesIndexName())
+            .document(movie)
+            .build()
+    }
+
+    override fun searchMovies(title: String): Movie? {
+        try {
+            val searchResponse: SearchResponse&lt;Movie&gt; = client.search({ s -&gt;
+                    s.index(appConfiguration.getMoviesIndexName()).query { q -&gt;
+                            q.match { m -&gt;
+                                m.field("title").query { fq -&gt; fq.stringValue(title) }
+                            }}}, Movie::class.java)
+            LOG.info(
+                "Searching for '{}' took {} and found {}",
+                title,
+                searchResponse.took(),
+                searchResponse.hits().total()?.value()
+            )
+
+            val hits: Iterator&lt;Hit&lt;Movie&gt;&gt; = searchResponse.hits().hits().iterator()
+            if (hits.hasNext()) {
+                return hits.next().source()
+            }
+            return null
+        } catch (e: Exception) {
+            val errorMessage = String.format("An exception occurred while searching for title '%s'", title)
+            LOG.error(errorMessage)
+            throw MovieServiceException(errorMessage, e)
+        }
+    }
+
+    companion object {
+        private val LOG: Logger = LoggerFactory.getLogger(MovieServiceImpl::class.java)
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">package micronaut.example.service
 
 import micronaut.example.configuration.AppConfiguration
@@ -294,87 +370,13 @@ class MovieServiceImpl implements MovieService {
 }</code></pre>
 </div>
 </div>
-<div class="listingblock multi-language-sample">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">package micronaut.example.service
-
-import jakarta.inject.Singleton
-import micronaut.example.configuration.AppConfiguration
-import micronaut.example.exception.MovieServiceException
-import org.opensearch.client.opensearch.OpenSearchClient
-import org.opensearch.client.opensearch.core.IndexRequest
-import org.opensearch.client.opensearch.core.IndexResponse
-import org.opensearch.client.opensearch.core.SearchResponse
-import org.opensearch.client.opensearch.core.search.Hit
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-
-@Singleton
-class MovieServiceImpl(
-    private val appConfiguration: AppConfiguration,
-    private val client: OpenSearchClient
-) : MovieService {
-
-    override fun saveMovie(movie: Movie): String {
-        try {
-            val indexRequest: IndexRequest&lt;Movie&gt; = createIndexRequest(movie)
-            val indexResponse: IndexResponse = client.index(indexRequest)
-            val id: String = indexResponse.id()
-            LOG.info("Document for '{}' {} successfully in ES. The id is: {}", movie, indexResponse.result(), id)
-            return id
-        } catch (e: Exception) {
-            val errorMessage = String.format("An exception occurred while indexing '%s'", movie)
-            LOG.error(errorMessage)
-            throw MovieServiceException(errorMessage, e)
-        }
-    }
-
-    private fun createIndexRequest(movie: Movie): IndexRequest&lt;Movie&gt; {
-        return IndexRequest.Builder&lt;Movie&gt;()
-            .index(appConfiguration.getMoviesIndexName())
-            .document(movie)
-            .build()
-    }
-
-    override fun searchMovies(title: String): Movie? {
-        try {
-            val searchResponse: SearchResponse&lt;Movie&gt; = client.search({ s -&gt;
-                    s.index(appConfiguration.getMoviesIndexName()).query { q -&gt;
-                            q.match { m -&gt;
-                                m.field("title").query { fq -&gt; fq.stringValue(title) }
-                            }}}, Movie::class.java)
-            LOG.info(
-                "Searching for '{}' took {} and found {}",
-                title,
-                searchResponse.took(),
-                searchResponse.hits().total().value()
-            )
-
-            val hits: Iterator&lt;Hit&lt;Movie&gt;&gt; = searchResponse.hits().hits().iterator()
-            if (hits.hasNext()) {
-                return hits.next().source()
-            }
-            return null
-        } catch (e: Exception) {
-            val errorMessage = String.format("An exception occurred while searching for title '%s'", title)
-            LOG.error(errorMessage)
-            throw MovieServiceException(errorMessage, e)
-        }
-    }
-
-    companion object {
-        private val LOG: Logger = LoggerFactory.getLogger(MovieServiceImpl::class.java)
-    }
-}</code></pre>
-</div>
-</div>
 </div>
 </div>
 
 <h1 id="openSearchAmazon"><a class="anchor" href="#openSearchAmazon"></a>2 OpenSearch Amazon</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.7.x/src/main/docs/guide/openSearchAmazon.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/2.0.x/src/main/docs/guide/openSearchAmazon.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -397,7 +399,8 @@ class MovieServiceImpl(
     &lt;artifactId&gt;micronaut-opensearch-amazon&lt;/artifactId&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
-</div></p>
+</div>
+</p>
 </div>
 <div class="paragraph">
 <p>You can configure the connection with:</p>
@@ -466,7 +469,7 @@ class AwsSdk2TransportOptionsBeanCreatedEventListener implements BeanCreatedEven
 <h1 id="openSearchHttpClient5"><a class="anchor" href="#openSearchHttpClient5"></a>3 OpenSearch using Apache HttpClient 5 Transport</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.7.x/src/main/docs/guide/openSearchHttpClient5.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/2.0.x/src/main/docs/guide/openSearchHttpClient5.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -489,7 +492,8 @@ class AwsSdk2TransportOptionsBeanCreatedEventListener implements BeanCreatedEven
     &lt;artifactId&gt;micronaut-opensearch-httpclient5&lt;/artifactId&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
-</div></p>
+</div>
+</p>
 </div>
 <div class="paragraph">
 <p>You can configure the connection with:</p>
@@ -534,7 +538,7 @@ to configure the connection according to your use case.</p>
 <h1 id="openSearchRestClient"><a class="anchor" href="#openSearchRestClient"></a>4 OpenSearch RestClient</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.7.x/src/main/docs/guide/openSearchRestClient.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/2.0.x/src/main/docs/guide/openSearchRestClient.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -557,7 +561,8 @@ to configure the connection according to your use case.</p>
     &lt;artifactId&gt;micronaut-opensearch-restclient&lt;/artifactId&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
-</div></p>
+</div>
+</p>
 </div>
 <div class="paragraph">
 <p>        <div class="listingblock multi-language-sample">
@@ -573,7 +578,8 @@ to configure the connection according to your use case.</p>
     &lt;artifactId&gt;micronaut-jackson-databind&lt;/artifactId&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
-</div></p>
+</div>
+</p>
 </div>
 <div class="paragraph">
 <p>You can configure the connection with:</p>
@@ -598,7 +604,7 @@ to configure the connection according to your use case.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.rest-client.http-hosts</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">org.apache.http.HttpHost</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.apache.hc.core5.http.HttpHost</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">One or more hosts that client will connect to.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -611,7 +617,7 @@ to configure the connection according to your use case.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.opensearch.rest-client.default-headers</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">org.apache.http.Header</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.apache.hc.core5.http.Header</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The defaults {@link Header} to sent with each request.</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -632,7 +638,7 @@ to configure the connection according to your use case.</p>
 <h1 id="health"><a class="anchor" href="#health"></a>5 Health</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.7.x/src/main/docs/guide/health.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/2.0.x/src/main/docs/guide/health.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -674,7 +680,7 @@ to configure the connection according to your use case.</p>
 <h1 id="releaseHistory"><a class="anchor" href="#releaseHistory"></a>6 Release History</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.7.x/src/main/docs/guide/releaseHistory.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/2.0.x/src/main/docs/guide/releaseHistory.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -690,7 +696,7 @@ to configure the connection according to your use case.</p>
 <h1 id="repository"><a class="anchor" href="#repository"></a>7 Repository</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/1.7.x/src/main/docs/guide/repository.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-opensearch/edit/2.0.x/src/main/docs/guide/repository.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
