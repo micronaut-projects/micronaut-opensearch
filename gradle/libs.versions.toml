@@ -29,7 +29,7 @@ managed-opensearch-testcontainers = "2.1.4"
 
 # Managed versions appear in the BOM
 managed-opensearch-java = "3.5.0"
-managed-opensearch-rest-client = "3.0.0"
+managed-opensearch-rest-client = "3.4.0"
 managed-apache-httpcomponents-httpclient5 = "5.5.1"
 
 [libraries]
