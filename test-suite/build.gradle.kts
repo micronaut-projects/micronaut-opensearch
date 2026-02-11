@@ -12,6 +12,7 @@ dependencies {
 
     runtimeOnly(mnLogging.logback.classic)
 
+    testImplementation(platform(libs.micronaut.test))
     testImplementation(mn.micronaut.http.client)
     testImplementation(libs.awaitility)
 
