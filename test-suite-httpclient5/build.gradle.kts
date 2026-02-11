@@ -5,7 +5,7 @@ plugins {
 dependencies {
     testAnnotationProcessor(mnSerde.micronaut.serde.processor)
     testAnnotationProcessor(mnValidation.micronaut.validation.processor)
-
+    testImplementation(platform(libs.micronaut.test))
     testImplementation(mnSerde.micronaut.serde.jackson)
     testImplementation(mnValidation.micronaut.validation)
     testImplementation(projects.micronautOpensearchHttpclient5)
@@ -21,4 +21,3 @@ micronaut {
     runtime("netty")
     testRuntime("junit5")
 }
-
