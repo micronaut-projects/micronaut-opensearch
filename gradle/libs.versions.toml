@@ -17,6 +17,7 @@
 
 [versions]
 micronaut = "5.0.0-M10"
+micronaut-test = "5.0.0-M6"
 micronaut-platform = "4.10.7"
 micronaut-serde = "3.0.0-M2"
 micronaut-aws = "4.11.0"
@@ -45,6 +46,7 @@ micronaut-aws = { module = "io.micronaut.aws:micronaut-aws-bom", version.ref = "
 micronaut-runtime-groovy = { module = "io.micronaut.groovy:micronaut-runtime-groovy" }
 micronaut-kotlin = { module = "io.micronaut.kotlin:micronaut-kotlin-bom", version.ref = "micronaut-kotlin" }
 micronaut-validation = { module = "io.micronaut.validation:micronaut-validation-bom", version.ref = "micronaut-validation" }
+micronaut-test = { module = "io.micronaut.test:micronaut-test-bom", version.ref = "micronaut-test" }
 awssdk-apache-client = { module = 'software.amazon.awssdk:apache-client' }
 awssdk-regions = { module = 'software.amazon.awssdk:regions' }
 awssdk-auth = { module = 'software.amazon.awssdk:auth' }
