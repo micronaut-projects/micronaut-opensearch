@@ -13,6 +13,6 @@ dependencies {
 
 ossIndexAudit {
     excludeCoordinates = [
-            "org.bouncycastle:bc-fips:2.0.0"
+            "org.bouncycastle:bc-fips:2.1.2"
     ]
 }
