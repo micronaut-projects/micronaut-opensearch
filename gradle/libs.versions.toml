@@ -16,22 +16,22 @@
 # a managed version (a version which alias starts with "managed-"
 
 [versions]
-micronaut = "5.0.0-M23"
-micronaut-test = "5.0.0-M7"
-micronaut-platform = "4.10.7"
-micronaut-serde = "3.0.0-M5"
+micronaut = "5.0.0-M25"
+micronaut-test = "5.0.0-M8"
+micronaut-platform = "4.10.13"
+micronaut-serde = "3.0.0-M8"
 micronaut-aws = "4.11.0"
 micronaut-kotlin = "4.7.0"
-micronaut-validation="5.0.0-M1"
+micronaut-validation="5.0.0-M2"
 
 awaitility = "4.3.0"
 micronaut-gradle-plugin = "4.6.2"
 managed-opensearch-testcontainers = "2.1.4"
 
 # Managed versions appear in the BOM
-managed-opensearch-java = "3.5.0"
-managed-opensearch-rest-client = "3.4.0"
-managed-apache-httpcomponents-httpclient5 = "5.5.1"
+managed-opensearch-java = "3.8.0"
+managed-opensearch-rest-client = "3.6.0"
+managed-apache-httpcomponents-httpclient5 = "5.6.1"
 
 [libraries]
 managed-opensearch-java = { module = "org.opensearch.client:opensearch-java", version.ref = "managed-opensearch-java" }
