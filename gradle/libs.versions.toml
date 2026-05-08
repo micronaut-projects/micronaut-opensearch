@@ -31,7 +31,7 @@ managed-opensearch-testcontainers = "4.1.0"
 # Managed versions appear in the BOM
 managed-opensearch-java = "3.8.0"
 managed-opensearch-rest-client = "3.6.0"
-managed-apache-httpcomponents-httpclient5 = "5.5.1"
+managed-apache-httpcomponents-httpclient5 = "5.6.1"
 
 [libraries]
 managed-opensearch-java = { module = "org.opensearch.client:opensearch-java", version.ref = "managed-opensearch-java" }
