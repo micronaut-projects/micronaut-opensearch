@@ -13,10 +13,3 @@ dependencies {
 
     testImplementation(mn.micronaut.jackson.databind)
 }
-
-micronautBuild {
-    // new module, so no binary check
-    binaryCompatibility {
-        enabled.set(false)
-    }
-}

@@ -6,10 +6,3 @@ dependencies {
     api(projects.micronautOpensearch)
     implementation(libs.managed.apache.httpcomponents.httpclient5)
 }
-
-micronautBuild {
-    // new module, so no binary check
-    binaryCompatibility {
-        enabled.set(false)
-    }
-}

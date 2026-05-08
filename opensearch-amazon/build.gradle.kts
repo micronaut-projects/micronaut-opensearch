@@ -10,10 +10,3 @@ dependencies {
     api(libs.awssdk.regions)
     api(libs.awssdk.apache.client)
 }
-
-micronautBuild {
-    // new module, so no binary check
-    binaryCompatibility {
-        enabled.set(false)
-    }
-}
