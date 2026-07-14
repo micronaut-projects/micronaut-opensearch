@@ -28,7 +28,7 @@ awaitility = "4.3.0"
 micronaut-gradle-plugin = "5.0.0-M1"
 managed-opensearch-testcontainers = "4.1.0"
 # Managed versions appear in the BOM
-managed-opensearch-java = "3.8.0"
+managed-opensearch-java = "3.9.0"
 managed-opensearch-rest-client = "3.7.0"
 managed-apache-httpcomponents-httpclient5 = "5.6.1"
 
