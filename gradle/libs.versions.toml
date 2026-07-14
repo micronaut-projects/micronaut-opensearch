@@ -33,7 +33,7 @@ managed-opensearch-rest-client = "3.7.0"
 managed-apache-httpcomponents-httpclient5 = "5.6.2"
 
 # opensearch-java 3.8.0 requests jackson-core 2.20.1, which is affected by GHSA-72hv-8253-57qq
-managed-jackson = "2.21.1"
+managed-jackson = "2.21.5"
 [libraries]
 managed-jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "managed-jackson" }
 managed-jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "managed-jackson" }
