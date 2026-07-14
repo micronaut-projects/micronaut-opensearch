@@ -16,16 +16,16 @@
 # a managed version (a version which alias starts with "managed-"
 
 [versions]
-micronaut = "5.0.0"
-micronaut-test = "5.0.0"
-micronaut-platform = "5.0.0-RC1"
-micronaut-serde = "3.0.0"
-micronaut-aws = "5.0.0"
+micronaut = "5.1.6"
+micronaut-test = "5.0.1"
+micronaut-platform = "5.0.4"
+micronaut-serde = "3.1.0"
+micronaut-aws = "5.0.1"
 micronaut-kotlin = "5.0.0"
-micronaut-validation = "5.0.0"
+micronaut-validation = "5.1.0"
 
 awaitility = "4.3.0"
-micronaut-gradle-plugin = "5.0.0-M1"
+micronaut-gradle-plugin = "5.0.2"
 managed-opensearch-testcontainers = "4.1.0"
 # Managed versions appear in the BOM
 managed-opensearch-java = "3.8.0"
