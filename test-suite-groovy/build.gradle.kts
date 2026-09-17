@@ -12,6 +12,8 @@ dependencies {
     testImplementation(libs.micronaut.runtime.groovy)
 
     testImplementation(projects.micronautOpensearchRestclient)
+    // The AwsSdk2TransportOptionsBeanCreatedEventListener snippet of the guide
+    testImplementation(projects.micronautOpensearchAmazon)
     testImplementation(mn.micronaut.jackson.databind)
     testImplementation(mn.micronaut.management)
     testImplementation(mn.micronaut.http.client)

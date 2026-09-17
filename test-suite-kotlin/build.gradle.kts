@@ -23,6 +23,8 @@ dependencies {
 
     testImplementation(platform(mnTest.boms.junit))
     testImplementation(projects.micronautOpensearchRestclient)
+    // The AwsSdk2TransportOptionsBeanCreatedEventListener snippet of the guide
+    testImplementation(projects.micronautOpensearchAmazon)
     testImplementation(mnTest.junit.platform.launcher)
 
     testRuntimeOnly(mnLogging.logback.classic)
