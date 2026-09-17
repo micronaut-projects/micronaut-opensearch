@@ -7,6 +7,8 @@ dependencies {
 
     implementation(mnValidation.micronaut.validation)
     implementation(projects.micronautOpensearchRestclient)
+    // The AwsSdk2TransportOptionsBeanCreatedEventListener snippet of the guide
+    implementation(projects.micronautOpensearchAmazon)
     implementation(mn.micronaut.jackson.databind)
     implementation(mn.micronaut.management)
 

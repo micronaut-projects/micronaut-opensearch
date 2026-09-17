@@ -9,10 +9,4 @@ include::{includedir}configurationProperties/io.micronaut.opensearch.aws.AmazonO
 Moreover, you can create a https://docs.micronaut.io/latest/api/io/micronaut/context/event/BeanCreatedEventListener.html[BeanCreatedEventListener]
 for a bean of type `org.opensearch.client.transport.aws.AwsSdk2TransportOptions.Builder`, to configure the connection according to your use case.
 
-[source, java]
-----
-include::opensearch-amazon/src/test/java/io/micronaut/opensearch/aws/AwsSdk2TransportOptionsBeanCreatedEventListener.java[tags=startclazz]
-include::opensearch-amazon/src/test/java/io/micronaut/opensearch/aws/AwsSdk2TransportOptionsBeanCreatedEventListener.java[tags=method]
-include::opensearch-amazon/src/test/java/io/micronaut/opensearch/aws/AwsSdk2TransportOptionsBeanCreatedEventListener.java[tags=endmethod]
-include::opensearch-amazon/src/test/java/io/micronaut/opensearch/aws/AwsSdk2TransportOptionsBeanCreatedEventListener.java[tags=endclazz]
-----
+snippet::micronaut.example.aws.AwsSdk2TransportOptionsBeanCreatedEventListener[tags="startclazz,method,endmethod,endclazz"]
