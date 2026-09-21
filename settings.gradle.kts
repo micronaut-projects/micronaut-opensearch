@@ -6,7 +6,7 @@ pluginManagement {
 }
 
 plugins {
-    id("io.micronaut.build.shared.settings") version "8.0.2"
+    id("io.micronaut.build.shared.settings") version "8.1.2"
 }
 
 rootProject.name = "opensearch-parent"
@@ -20,6 +20,7 @@ include("test-suite-httpclient5")
 include("test-suite")
 include("test-suite-groovy")
 include("test-suite-kotlin")
+include("test-suite-python")
 include("test-suite-opensearch-container")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
