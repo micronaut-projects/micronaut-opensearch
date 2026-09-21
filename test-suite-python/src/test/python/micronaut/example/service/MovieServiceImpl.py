@@ -1,6 +1,5 @@
 import logging
 
-import java
 from jakarta.inject import Singleton
 from java.lang import Exception as JavaException
 from org.opensearch.client.opensearch import OpenSearchClient
@@ -12,8 +11,6 @@ from micronaut.example.service.Movie import Movie
 from micronaut.example.service.MovieService import MovieService
 
 LOG = logging.getLogger(__name__)
-# The document class of the search response, as a Java class (the Python class cannot be passed to Java as a Class)
-MovieDocument = java.type("micronaut.example.service.Movie")
 
 
 @Singleton
@@ -47,7 +44,7 @@ class MovieServiceImpl(MovieService):
                 lambda s: s.index(self.app_configuration.movies_index_name).query(
                     lambda q: q.match(
                         lambda m: m.field("title").query(lambda fq: fq.stringValue(title)))),
-                MovieDocument)
+                Movie)
             LOG.info("Searching for '%s' took %s and found %s",
                      title,
                      search_response.took(),
