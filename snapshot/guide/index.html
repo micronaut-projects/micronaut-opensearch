@@ -218,6 +218,69 @@ class MovieServiceImpl implements MovieService {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">import logging
+
+from jakarta.inject import Singleton
+from java.lang import Exception as JavaException
+from org.opensearch.client.opensearch import OpenSearchClient
+from org.opensearch.client.opensearch.core import IndexRequest
+
+from micronaut.example.configuration.AppConfiguration import AppConfiguration
+from micronaut.example.exception.MovieServiceException import MovieServiceException
+from micronaut.example.service.Movie import Movie
+from micronaut.example.service.MovieService import MovieService
+
+LOG = logging.getLogger(__name__)
+
+
+@Singleton
+class MovieServiceImpl(MovieService):
+
+    def __init__(self, app_configuration: AppConfiguration, client: OpenSearchClient):
+        self.app_configuration = app_configuration
+        self.client = client
+
+    def save_movie(self, movie: Movie) -&gt; str:
+        try:
+            index_request = self.create_index_request(movie)
+            index_response = self.client.index(index_request)
+            id = index_response.id()
+            LOG.info("Document for '%s' %s successfully in ES. The id is: %s", movie, index_response.result(), id)
+            return id
+        except JavaException as e:
+            error_message = f"An exception occurred while indexing '{movie}'"
+            LOG.error(error_message)
+            raise MovieServiceException(error_message, e)
+
+    def create_index_request(self, movie: Movie) -&gt; IndexRequest[Movie]:
+        return (IndexRequest.Builder()
+                .index(self.app_configuration.movies_index_name)
+                .document(movie)
+                .build())
+
+    def search_movies(self, title: str) -&gt; Movie | None:
+        try:
+            search_response = self.client.search(
+                lambda s: s.index(self.app_configuration.movies_index_name).query(
+                    lambda q: q.match(
+                        lambda m: m.field("title").query(lambda fq: fq.stringValue(title)))),
+                Movie)
+            LOG.info("Searching for '%s' took %s and found %s",
+                     title,
+                     search_response.took(),
+                     search_response.hits().total().value())
+            hits = search_response.hits().hits()
+            if not hits.isEmpty():
+                return hits.get(0).source()
+            return None
+        except JavaException as e:
+            error_message = f"An exception occurred while searching for title '{title}'"
+            LOG.error(error_message)
+            raise MovieServiceException(error_message, e)</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">package micronaut.example.service
 
 import jakarta.inject.Singleton
@@ -400,6 +463,15 @@ class MovieServiceImpl implements MovieService {
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
+<div class="listingblock multi-language-sample">
+<div class="title"></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-toml hljs" data-lang="pyronaut">[tool.pyronaut.dependencies]
+runtime = [
+    <span class="hljs-string">"io.micronaut.opensearch:micronaut-opensearch-amazon"</span>,
+]</code></pre>
+</div>
+</div>
 </p>
 </div>
 <div class="paragraph">
@@ -447,7 +519,7 @@ class MovieServiceImpl implements MovieService {
 <p>Moreover, you can create a <a href="https://docs.micronaut.io/latest/api/io/micronaut/context/event/BeanCreatedEventListener.html">BeanCreatedEventListener</a>
 for a bean of type <code>org.opensearch.client.transport.aws.AwsSdk2TransportOptions.Builder</code>, to configure the connection according to your use case.</p>
 </div>
-<div class="listingblock">
+<div class="listingblock multi-language-sample">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import io.micronaut.context.event.BeanCreatedEvent;
 import io.micronaut.context.event.BeanCreatedEventListener;
@@ -456,12 +528,73 @@ import org.opensearch.client.transport.aws.AwsSdk2TransportOptions;
 
 @Singleton
 class AwsSdk2TransportOptionsBeanCreatedEventListener implements BeanCreatedEventListener&lt;AwsSdk2TransportOptions.Builder&gt; {
+
     @Override
     public AwsSdk2TransportOptions.Builder onCreated(BeanCreatedEvent&lt;AwsSdk2TransportOptions.Builder&gt; event) {
         AwsSdk2TransportOptions.Builder builder = event.getBean();
+
         // Modify the builder here
         return builder;
     }
+
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from jakarta.inject import Singleton
+from micronaut.context.event import BeanCreatedEvent, BeanCreatedEventListener
+from org.opensearch.client.transport.aws import AwsSdk2TransportOptions
+
+
+@Singleton
+class AwsSdk2TransportOptionsBeanCreatedEventListener(BeanCreatedEventListener[AwsSdk2TransportOptions.Builder]):
+
+    def onCreated(self, event: BeanCreatedEvent[AwsSdk2TransportOptions.Builder]) -&gt; AwsSdk2TransportOptions.Builder:
+        builder = event.getBean()
+
+        # Modify the builder here
+        return builder</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.context.event.BeanCreatedEvent
+import io.micronaut.context.event.BeanCreatedEventListener
+import jakarta.inject.Singleton
+import org.opensearch.client.transport.aws.AwsSdk2TransportOptions
+
+@Singleton
+class AwsSdk2TransportOptionsBeanCreatedEventListener : BeanCreatedEventListener&lt;AwsSdk2TransportOptions.Builder&gt; {
+
+    override fun onCreated(event: BeanCreatedEvent&lt;AwsSdk2TransportOptions.Builder&gt;): AwsSdk2TransportOptions.Builder {
+        val builder = event.bean
+
+        // Modify the builder here
+        return builder
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.context.event.BeanCreatedEvent
+import io.micronaut.context.event.BeanCreatedEventListener
+import jakarta.inject.Singleton
+import org.opensearch.client.transport.aws.AwsSdk2TransportOptions
+
+@Singleton
+class AwsSdk2TransportOptionsBeanCreatedEventListener implements BeanCreatedEventListener&lt;AwsSdk2TransportOptions.Builder&gt; {
+
+    @Override
+    AwsSdk2TransportOptions.Builder onCreated(BeanCreatedEvent&lt;AwsSdk2TransportOptions.Builder&gt; event) {
+        AwsSdk2TransportOptions.Builder builder = event.bean
+
+        // Modify the builder here
+        return builder
+    }
+
 }</code></pre>
 </div>
 </div>
@@ -491,6 +624,15 @@ class AwsSdk2TransportOptionsBeanCreatedEventListener implements BeanCreatedEven
     &lt;groupId&gt;io.micronaut.opensearch&lt;/groupId&gt;
     &lt;artifactId&gt;micronaut-opensearch-httpclient5&lt;/artifactId&gt;
 &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title"></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-toml hljs" data-lang="pyronaut">[tool.pyronaut.dependencies]
+runtime = [
+    <span class="hljs-string">"io.micronaut.opensearch:micronaut-opensearch-httpclient5"</span>,
+]</code></pre>
 </div>
 </div>
 </p>
@@ -562,6 +704,15 @@ to configure the connection according to your use case.</p>
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
+<div class="listingblock multi-language-sample">
+<div class="title"></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-toml hljs" data-lang="pyronaut">[tool.pyronaut.dependencies]
+runtime = [
+    <span class="hljs-string">"io.micronaut.opensearch:micronaut-opensearch-restclient"</span>,
+]</code></pre>
+</div>
+</div>
 </p>
 </div>
 <div class="paragraph">
@@ -577,6 +728,15 @@ to configure the connection according to your use case.</p>
     &lt;groupId&gt;io.micronaut&lt;/groupId&gt;
     &lt;artifactId&gt;micronaut-jackson-databind&lt;/artifactId&gt;
 &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title"></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-toml hljs" data-lang="pyronaut">[tool.pyronaut.dependencies]
+runtime = [
+    <span class="hljs-string">"io.micronaut:micronaut-jackson-databind"</span>,
+]</code></pre>
 </div>
 </div>
 </p>
