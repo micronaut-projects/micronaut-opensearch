@@ -16,9 +16,9 @@
 # a managed version (a version which alias starts with "managed-"
 
 [versions]
-micronaut = "5.2.20"
+micronaut = "5.2.21"
 micronaut-test = "5.2.0"
-micronaut-platform = "5.2.3"
+micronaut-platform = "5.2.4"
 micronaut-serde = "3.2.6"
 micronaut-aws = "5.1.1"
 micronaut-kotlin = "5.1.0"
