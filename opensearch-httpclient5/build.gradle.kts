@@ -4,5 +4,4 @@ plugins {
 
 dependencies {
     api(projects.micronautOpensearch)
-    implementation(libs.managed.apache.httpcomponents.httpclient5)
 }
